@@ -10,34 +10,34 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
-package trueweb3j.response;
+package com.trueweb3j.response;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.ObjectReader;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.web3j.protocol.ObjectMapperFactory;
-import org.web3j.protocol.core.Response;
 
 import java.io.IOException;
+import java.util.Map;
 
+public class BalanceChange {
+    private Map<String, String> addrWithBalance;
 
-public class EtrueBalanceChange extends Response<BalanceChange> {
-
-    @Override
-    @JsonDeserialize(using = EtrueBalanceChange.ResponseDeserialiser.class)
-    public void setResult(BalanceChange balanceChange) {
-        super.setResult(balanceChange);
+    public BalanceChange() {
     }
 
-    public BalanceChange getBalanceChange() {
-        return getResult();
+    public BalanceChange(Map<String, String> addrWithBalance) {
+        this.addrWithBalance = addrWithBalance;
     }
 
-    public String getMessage() {
-        return super.getError().getMessage();
+    public Map<String, String> getAddrWithBalance() {
+        return addrWithBalance;
+    }
+
+    public void setAddrWithBalance(Map<String, String> addrWithBalance) {
+        this.addrWithBalance = addrWithBalance;
     }
 
     public static class ResponseDeserialiser extends JsonDeserializer<BalanceChange> {

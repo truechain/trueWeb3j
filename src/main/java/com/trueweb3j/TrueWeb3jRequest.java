@@ -1,13 +1,13 @@
-package trueweb3j;
+package com.trueweb3j;
 
 import org.web3j.protocol.Web3jService;
 import org.web3j.protocol.core.DefaultBlockParameter;
 import org.web3j.protocol.core.Request;
 import org.web3j.protocol.http.HttpService;
-import trueweb3j.common.Constant;
-import trueweb3j.response.BalanceChange;
-import trueweb3j.response.EthBlock;
-import trueweb3j.response.EtrueBalanceChange;
+import com.trueweb3j.common.Constant;
+import com.trueweb3j.response.BalanceChange;
+import com.trueweb3j.response.EthBlock;
+import com.trueweb3j.response.EtrueBalanceChange;
 
 import java.math.BigInteger;
 import java.util.Arrays;

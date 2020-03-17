@@ -1,4 +1,4 @@
-package trueweb3j.common;
+package com.trueweb3j.common;
 
 /**
  * 运行配置项

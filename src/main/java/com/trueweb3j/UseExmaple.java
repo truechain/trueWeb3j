@@ -1,7 +1,7 @@
-package trueweb3j;
+package com.trueweb3j;
 
-import trueweb3j.common.Constant;
-import trueweb3j.response.EthBlock;
+import com.trueweb3j.common.Constant;
+import com.trueweb3j.response.EthBlock;
 
 import java.math.BigInteger;
 
