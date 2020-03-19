@@ -10,7 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
-package com.trueweb3j.response;
+package com.trueweb3j.response.fast;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
@@ -18,6 +18,7 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.ObjectReader;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.trueweb3j.response.committee.CommitteeInfo;
 import org.apache.commons.lang3.StringUtils;
 import org.web3j.protocol.ObjectMapperFactory;
 import org.web3j.protocol.core.Response;
@@ -149,17 +150,13 @@ public class EthBlock extends Response<EthBlock.Block> {
             this.maker = maker;
         }
 
-        public String getSnailNumber() {
+        public String getSnailNumberRaw() {
             return snailNumber;
         }
 
-        public BigInteger getSnailNumberFinal() {
-            if (StringUtils.isBlank(snailNumber)) {
-                return null;
-            }
+        public BigInteger getSnailNumber() {
             return Numeric.decodeQuantity(snailNumber);
         }
-
 
         public void setSnailNumber(String snailNumber) {
             this.snailNumber = snailNumber;

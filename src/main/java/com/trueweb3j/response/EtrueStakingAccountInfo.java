@@ -18,22 +18,22 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.ObjectReader;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.trueweb3j.response.snail.BalanceChange;
+import com.trueweb3j.response.staking.StakingAccountInfo;
 import org.web3j.protocol.ObjectMapperFactory;
 import org.web3j.protocol.core.Response;
 
 import java.io.IOException;
 
 
-public class EtrueBalanceChange extends Response<BalanceChange> {
+public class EtrueStakingAccountInfo extends Response<StakingAccountInfo> {
 
     @Override
-    @JsonDeserialize(using = EtrueBalanceChange.ResponseDeserialiser.class)
-    public void setResult(BalanceChange balanceChange) {
-        super.setResult(balanceChange);
+    @JsonDeserialize(using = EtrueStakingAccountInfo.ResponseDeserialiser.class)
+    public void setResult(StakingAccountInfo stakingAccountInfo) {
+        super.setResult(stakingAccountInfo);
     }
 
-    public BalanceChange getBalanceChange() {
+    public StakingAccountInfo getStakingAccountInfo() {
         return getResult();
     }
 
@@ -41,17 +41,17 @@ public class EtrueBalanceChange extends Response<BalanceChange> {
         return super.getError().getMessage();
     }
 
-    public static class ResponseDeserialiser extends JsonDeserializer<BalanceChange> {
+    public static class ResponseDeserialiser extends JsonDeserializer<StakingAccountInfo> {
         private ObjectReader objectReader = ObjectMapperFactory.getObjectReader();
 
         @Override
-        public BalanceChange deserialize(
+        public StakingAccountInfo deserialize(
                 JsonParser jsonParser, DeserializationContext deserializationContext)
                 throws IOException {
             if (jsonParser.getCurrentToken() != JsonToken.VALUE_NULL) {
-                return objectReader.readValue(jsonParser, BalanceChange.class);
+                return objectReader.readValue(jsonParser, StakingAccountInfo.class);
             } else {
-                return null; // null is wrapped by Optional in above getter
+                return null;
             }
         }
     }

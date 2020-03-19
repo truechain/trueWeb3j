@@ -1,0 +1,15 @@
+package com.trueweb3j.response.Reward;
+
+import java.util.List;
+
+public class SARewardInfos {
+    public List<RewardInfo> Items;
+
+    public List<RewardInfo> getItems() {
+        return Items;
+    }
+
+    public void setItems(List<RewardInfo> items) {
+        Items = items;
+    }
+}

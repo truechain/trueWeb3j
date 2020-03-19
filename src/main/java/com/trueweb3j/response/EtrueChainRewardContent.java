@@ -17,38 +17,39 @@ import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.ObjectReader;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.trueweb3j.response.Reward.ChainRewardContent;
 import org.web3j.protocol.ObjectMapperFactory;
+import org.web3j.protocol.core.Response;
 
 import java.io.IOException;
-import java.util.Map;
 
-public class BalanceChange {
-    private Map<String, String> addrWithBalance;
 
-    public BalanceChange() {
+public class EtrueChainRewardContent extends Response<ChainRewardContent> {
+
+    @Override
+    @JsonDeserialize(using = EtrueChainRewardContent.ResponseDeserialiser.class)
+    public void setResult(ChainRewardContent chainRewardContent) {
+        super.setResult(chainRewardContent);
     }
 
-    public BalanceChange(Map<String, String> addrWithBalance) {
-        this.addrWithBalance = addrWithBalance;
+    public ChainRewardContent getChainRewardContent() {
+        return getResult();
     }
 
-    public Map<String, String> getAddrWithBalance() {
-        return addrWithBalance;
+    public String getMessage() {
+        return super.getError().getMessage();
     }
 
-    public void setAddrWithBalance(Map<String, String> addrWithBalance) {
-        this.addrWithBalance = addrWithBalance;
-    }
-
-    public static class ResponseDeserialiser extends JsonDeserializer<BalanceChange> {
+    public static class ResponseDeserialiser extends JsonDeserializer<ChainRewardContent> {
         private ObjectReader objectReader = ObjectMapperFactory.getObjectReader();
 
         @Override
-        public BalanceChange deserialize(
+        public ChainRewardContent deserialize(
                 JsonParser jsonParser, DeserializationContext deserializationContext)
                 throws IOException {
             if (jsonParser.getCurrentToken() != JsonToken.VALUE_NULL) {
-                return objectReader.readValue(jsonParser, BalanceChange.class);
+                return objectReader.readValue(jsonParser, ChainRewardContent.class);
             } else {
                 return null; // null is wrapped by Optional in above getter
             }
