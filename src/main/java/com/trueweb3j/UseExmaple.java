@@ -54,8 +54,8 @@ public class UseExmaple {
 
         //通过指定质押地址获取该质押地址下的所有委托地址的收益
         String stakingAddress = "0x400abb159dc64f7d8b13fce3d0fd5c6a4559cb80";
-        ChainRewardContent chainRewardContent = trueWeb3jRequest.getChainRewardContent(
-                requestSnailNumber, stakingAddress);
+        ChainRewardContent chainRewardContent = trueWeb3jRequest.getChainRewardContent(requestSnailNumber, stakingAddress);
+
         if (chainRewardContent == null) {
             System.out.println("get chainRewardContent null,snailNumber=" + requestSnailNumber + "stakingAddress=" + stakingAddress);
             return;

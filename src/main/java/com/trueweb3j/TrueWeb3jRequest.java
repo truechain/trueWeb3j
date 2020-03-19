@@ -167,7 +167,7 @@ public class TrueWeb3jRequest {
         return allStakingAccount;
     }
 
-    /*public ChainRewardContent getChainRewardContent(BigInteger snailNumber, String stakingAddress) {
+    public ChainRewardContent getChainRewardContent(BigInteger snailNumber, String stakingAddress) {
         ChainRewardContent chainRewardContent = null;
 
         if (snailNumber == null || StringUtils.isBlank(stakingAddress)) {
@@ -185,9 +185,9 @@ public class TrueWeb3jRequest {
             e.printStackTrace();
         }
         return chainRewardContent;
-    }*/
+    }
 
-    public ChainRewardContent getChainRewardContent(String stakingAddress) {
+    /*public ChainRewardContent getChainRewardContent(String stakingAddress) {
         ChainRewardContent chainRewardContent = null;
         if (StringUtils.isBlank(stakingAddress)) {
             return null;
@@ -207,7 +207,7 @@ public class TrueWeb3jRequest {
             e.printStackTrace();
         }
         return chainRewardContent;
-    }
+    }*/
 
     public BigInteger getCurrentSnailNumber() {
         BigInteger snailNumber = null;
