@@ -10,15 +10,28 @@ public class Constant {
 //	public static String RPC_TESTNET_URL = "https://rpc.truescan.net/testnet";
 //	public static String RPC_TESTNET_URL = "http://39.100.35.164:8545/";
 
-    public static String SNAIL_REWARD_RPC = "etrue_getBalanceChangeBySnailNumber";
+    public static String BALANCE_CHANGE_BY_SNAIL_NUMBER = "etrue_getBalanceChangeBySnailNumber";
 
-    public static String GETBLOCK_BYNUMBER = "eth_getBlockByNumber";
+    public static String BLOCK_BYNUMBER = "eth_getBlockByNumber";
 
-    public static String GETSNAIL_REWARD_CONTENT = "etrue_getSnailRewardContent";
+    public static String SNAIL_REWARD_CONTENT = "etrue_getSnailRewardContent";
 
-    public static String GET_STAKING_ACCOUNT = "impawn_getStakingAccount";
+    public static String STAKING_ACCOUNT = "impawn_getStakingAccount";
 
-    public static String GET_ALLSTAKING_ACCOUNT = "impawn_getAllStakingAccount";
+    public static String ALLSTAKING_ACCOUNT = "impawn_getAllStakingAccount";
 
-    public static String GET_CHAIN_REWARD_CONTENT = "etrue_getChainRewardContent";
+    public static String CHAIN_REWARD_CONTENT = "etrue_getChainRewardContent";
+
+
+    public static String SNAIL_HASH_BY_NUMBER = "etrue_getSnailHashByNumber";
+
+    public static String SNAIL_BLOCK_NUMBER = "etrue_snailBlockNumber";
+
+    public static String SNAIL_BLOCK_BY_HASH = "etrue_getSnailBlockByHash";
+
+    public static String STATE_CHANGE_BY_FAST_NUMBER = "etrue_getStateChangeByFastNumber";
+
+    public static String COMMITTEE_BY_NUMBER = "etrue_getCommittee";
+
+
 }
