@@ -7,8 +7,8 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.ObjectReader;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.trueweb3j.response.EtrueFastBlock;
+import com.trueweb3j.response.transaction.TrueTransaction;
 import org.web3j.protocol.ObjectMapperFactory;
-import org.web3j.protocol.core.methods.response.Transaction;
 import org.web3j.utils.Numeric;
 
 import java.io.IOException;
@@ -224,7 +224,6 @@ public class FastBlock {
     }
 
 
-
     public interface TransactionResult<T> {
         T get();
     }
@@ -268,8 +267,8 @@ public class FastBlock {
         }
     }
 
-    public static class TransactionObject extends Transaction
-            implements TransactionResult<Transaction> {
+    public static class TransactionObject extends TrueTransaction
+            implements TransactionResult<TrueTransaction> {
         public TransactionObject() {
         }
 
@@ -278,17 +277,21 @@ public class FastBlock {
                 String blockNumber, String transactionIndex, String from,
                 String to, String value, String gasPrice, String gas,
                 String input, String creates, String publicKey,
-                String raw, String r, String s, int v) {
+                String raw, String r, String s, int v,
+                String fee, String payer, String pr, String ps, int pv) {
             super(
                     hash, nonce, blockHash,
                     blockNumber, transactionIndex, from,
                     to, value, gas, gasPrice,
                     input, creates, publicKey,
-                    raw, r, s, v);
+                    raw, r, s, v,
+                    fee, payer,
+                    pr, ps, pv);
+
         }
 
         @Override
-        public Transaction get() {
+        public TrueTransaction get() {
             return this;
         }
     }

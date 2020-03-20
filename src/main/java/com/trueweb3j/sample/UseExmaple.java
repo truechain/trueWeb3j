@@ -24,6 +24,12 @@ public class UseExmaple {
         String txHash = paymentTransactionUseExample.sendPaymentTxWithSigned(fromSignedTxStr);
         System.out.println("txHash=" + txHash);*/
 
+        TrueWeb3jRequest trueWeb3jRequest = new TrueWeb3jRequest(Constant.RPC_TESTNET_URL);
+
+        BigInteger requestFastNumber = new BigInteger("4824766");
+        FastBlock fastBlock = trueWeb3jRequest.getFastBlockByNumber(requestFastNumber, true);
+        System.out.println(fastBlock.getNumberRaw());
+
 //        testSnailBalance(trueWeb3jRequest);
 //        testSnailReward(trueWeb3jRequest);
 //        testStakingAccount(trueWeb3jRequest);
