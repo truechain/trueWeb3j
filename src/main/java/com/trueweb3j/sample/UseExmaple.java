@@ -1,5 +1,6 @@
-package com.trueweb3j;
+package com.trueweb3j.sample;
 
+import com.trueweb3j.TrueWeb3jRequest;
 import com.trueweb3j.common.Constant;
 import com.trueweb3j.response.Reward.RewardInfo;
 import com.trueweb3j.response.Reward.SARewardInfos;
@@ -20,14 +21,14 @@ public class UseExmaple {
 
     public static void main(String[] args) {
 
-        Web3j web3jt = Web3j.build(new HttpService(Constant.RPC_MAINNET_URL));
+        /*Web3j web3jt = Web3j.build(new HttpService(Constant.RPC_MAINNET_URL));
         try {
             EthBlockNumber ethBlockNumber = web3jt.ethBlockNumber().send();
             BigInteger blockNumber = ethBlockNumber.getBlockNumber();
             System.out.println("fast blockNumber=" + blockNumber);
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
 
 
         TrueWeb3jRequest trueWeb3jRequest = new TrueWeb3jRequest(Constant.RPC_MAINNET_URL);

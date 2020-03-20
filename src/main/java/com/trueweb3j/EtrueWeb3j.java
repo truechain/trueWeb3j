@@ -24,14 +24,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class TrueWeb3jRequest {
+public class EtrueWeb3j {
     public static Web3jService web3jService = null;
 
-    private TrueWeb3jRequest() {
 
-    }
-
-    public TrueWeb3jRequest(String rpcUrl) {
+    public EtrueWeb3j(String rpcUrl) {
         web3jService = new HttpService(rpcUrl);
     }
 
@@ -221,35 +218,20 @@ public class TrueWeb3jRequest {
         return currentCommitteeNumber;
     }
 
-    /*public String etrueSendTrueRawTransaction(String signedTransactionData) {
+    public String etrueSendTrueRawTransaction(String signedTransactionData) {
         System.out.println("go into sendTrueRawTransaction");
         String trueTransactionhash = null;
         try {
-            EtrueSendTrueTransaction etrueSendTrueTransaction = new Request<>(
+            EtrueSendTransaction etrueSendTrueTransaction = new Request<>(
                     Constant.SEND_TRUE_RAW_TRANSACTION,
                     Arrays.asList(signedTransactionData),
                     web3jService,
-                    EtrueSendTrueTransaction.class).send();
+                    EtrueSendTransaction.class).send();
             trueTransactionhash = etrueSendTrueTransaction.getTrueTransactionHash();
         } catch (Exception e) {
             e.printStackTrace();
         }
         return trueTransactionhash;
-    }*/
-
-    public EtrueSendTransaction etrueSendRawTransaction(String signedTransactionData) {
-        System.out.println("go into etrueSendTrueRawTransaction");
-        EtrueSendTransaction etrueSendTrueTransaction = null;
-        try {
-            etrueSendTrueTransaction = new Request<>(
-                    Constant.SEND_TRUE_RAW_TRANSACTION,
-                    Arrays.asList(signedTransactionData),
-                    web3jService,
-                    EtrueSendTransaction.class).send();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return etrueSendTrueTransaction;
     }
 
     /**
