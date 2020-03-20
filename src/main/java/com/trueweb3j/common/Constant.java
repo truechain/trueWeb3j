@@ -33,5 +33,9 @@ public class Constant {
 
     public static String COMMITTEE_BY_NUMBER = "etrue_getCommittee";
 
+    public static String CURRENT_COMMITTEE_NUMBER = "etrue_committeeNumber";
+
+    public static String SEND_TRUE_RAW_TRANSACTION = "etrue_sendTrueRawTransaction";
+
 
 }

@@ -205,6 +205,38 @@ public class TrueWeb3jRequest {
         return committeeInfo;
     }
 
+    public Integer getCurrentCommitteeNumber() {
+        System.out.println("go into getCurrentCommitteeNumber");
+        Integer currentCommitteeNumber = null;
+        try {
+            EtrueCommitteeNumber etrueCommitteeNumber = new Request<>(
+                    Constant.CURRENT_COMMITTEE_NUMBER,
+                    Arrays.asList(),
+                    web3jService,
+                    EtrueCommitteeNumber.class).send();
+            currentCommitteeNumber = etrueCommitteeNumber.getCommitteeNumber();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return currentCommitteeNumber;
+    }
+
+    public String sendTrueRawTransaction(String signedTransactionData) {
+        System.out.println("go into sendTrueRawTransaction");
+        String trueTransactionhash = null;
+        try {
+            EtrueSendTrueTransaction etrueSendTrueTransaction = new Request<>(
+                    Constant.SEND_TRUE_RAW_TRANSACTION,
+                    Arrays.asList(signedTransactionData),
+                    web3jService,
+                    EtrueSendTrueTransaction.class).send();
+            trueTransactionhash = etrueSendTrueTransaction.getTrueTransactionHash();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return trueTransactionhash;
+    }
+
     /**
      * get balance change with addresses by fast number
      *
