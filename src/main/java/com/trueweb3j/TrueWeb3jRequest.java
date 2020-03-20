@@ -4,6 +4,7 @@ import com.trueweb3j.response.*;
 import com.trueweb3j.response.Reward.ChainRewardContent;
 import com.trueweb3j.response.committee.CommitteeInfo;
 import com.trueweb3j.response.fast.EthBlock;
+import com.trueweb3j.response.fast.FastBlock;
 import com.trueweb3j.response.snail.BalanceChange;
 import com.trueweb3j.response.snail.SnailBlock;
 import com.trueweb3j.response.snail.SnailRewardContenet;
@@ -61,15 +62,16 @@ public class TrueWeb3jRequest {
      * @param returnFullTransactionObjects
      * @return
      */
-    public EthBlock.Block getFastBlockByNumber(BigInteger fastBlockNumber, boolean returnFullTransactionObjects) {
-        EthBlock.Block fastBlock = null;
+
+    public FastBlock getFastBlockByNumber(BigInteger fastBlockNumber, boolean returnFullTransactionObjects) {
+        FastBlock fastBlock = null;
         try {
-            EthBlock ethBlock = new Request<>(
+            EtrueFastBlock etrueFastBlock = new Request<>(
                     Constant.BLOCK_BYNUMBER,
                     Arrays.asList(DefaultBlockParameter.valueOf(fastBlockNumber).getValue(), returnFullTransactionObjects),
                     web3jService,
-                    EthBlock.class).send();
-            fastBlock = ethBlock.getBlock();
+                    EtrueFastBlock.class).send();
+            fastBlock = etrueFastBlock.getFastBlock();
         } catch (Exception e) {
             e.printStackTrace();
         }

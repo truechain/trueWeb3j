@@ -1,14 +1,33 @@
 package com.trueweb3j.common;
 
+import org.web3j.tx.ChainId;
+import org.web3j.utils.Convert;
+
+import java.math.BigInteger;
+
 /**
  * 运行配置项
  */
 public class Constant {
     //	public static String RPC_URL = "https://rpc.truescan.net/testnet";
-    public static String RPC_MAINNET_URL = "http://47.108.131.16:8565";
+
 //    public static String RPC_TESTNET_URL = "http://47.92.52.57:8545";
-//	public static String RPC_TESTNET_URL = "https://rpc.truescan.net/testnet";
+
 //	public static String RPC_TESTNET_URL = "http://39.100.35.164:8545/";
+
+    public static String RPC_MAINNET_URL = "http://47.108.131.16:8565";
+    public static int CHAINID_MAINNET = 19330;
+
+    public static String RPC_TESTNET_URL = "https://rpc.truescan.net/testnet";
+    public static int CHAINID_TESTNET = 18928;
+
+    public static BigInteger DEFAULT_GASPRICE = Convert.toWei("2", Convert.Unit.GWEI).toBigInteger();
+
+    public static BigInteger DEFAULT_GASLIMIT = Convert.toWei("210000", Convert.Unit.WEI).toBigInteger();
+
+    public static BigInteger DEFAULT_VALUE = Convert.toWei("1", Convert.Unit.ETHER).toBigInteger();
+
+    public static BigInteger DEFAULT_FEE = Convert.toWei("1", Convert.Unit.ETHER).toBigInteger();
 
     public static String BALANCE_CHANGE_BY_SNAIL_NUMBER = "etrue_getBalanceChangeBySnailNumber";
 

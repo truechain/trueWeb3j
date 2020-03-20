@@ -64,14 +64,21 @@ public class EthBlock extends Response<EthBlock.Block> {
         private String gasLimit;
         private String gasUsed;
         private String timestamp;
+
         private List<TransactionResult> transactions;
+
         private List<String> uncles;
+
         private List<String> sealFields;
 
         private List<CommitteeInfo.CommitteeMember> switchInfos;
+
         private String snailNumber;
+
         private String snailHash;
+
         private String maker;
+
         private String committeeRoot;
 
         public Block() {

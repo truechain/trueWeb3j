@@ -43,7 +43,7 @@ public class TrueTransactionDecoder {
                         && ((RlpString) values.getValues().get(10)).getBytes().length == 12)) {
             // the 8th or 9nth element is the hex
             // representation of "restricted" for private transactions
-            return TrueRawTransaction.createTransaction(nonce, gasPrice, gasLimit, to, value, data,fee,payment);
+            return TrueRawTransaction.createTruePaymentAndFeeTransaction(nonce, gasPrice, gasLimit, to, value, data,fee,payment);
         } else {
             final byte[] v = ((RlpString) values.getValues().get(8)).getBytes();
             final byte[] r =

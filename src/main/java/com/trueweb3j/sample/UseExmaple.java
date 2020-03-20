@@ -6,6 +6,7 @@ import com.trueweb3j.response.Reward.RewardInfo;
 import com.trueweb3j.response.Reward.SARewardInfos;
 import com.trueweb3j.response.fast.EthBlock;
 import com.trueweb3j.response.Reward.ChainRewardContent;
+import com.trueweb3j.response.fast.FastBlock;
 import com.trueweb3j.response.snail.SnailRewardContenet;
 import com.trueweb3j.response.staking.AllStakingAccount;
 import org.web3j.protocol.Web3j;
@@ -20,22 +21,27 @@ import java.util.Map;
 public class UseExmaple {
 
     public static void main(String[] args) {
+        PaymentTransactionUseExample paymentTransactionUseExample = new PaymentTransactionUseExample();
+//        System.out.println(paymentTransactionUseExample.sendPaymentTx());
 
-        /*Web3j web3jt = Web3j.build(new HttpService(Constant.RPC_MAINNET_URL));
-        try {
-            EthBlockNumber ethBlockNumber = web3jt.ethBlockNumber().send();
-            BigInteger blockNumber = ethBlockNumber.getBlockNumber();
-            System.out.println("fast blockNumber=" + blockNumber);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
+        /*String fromSignedTxStr =paymentTransactionUseExample.sendPaymentTxWithFrom();
+        String txHash = paymentTransactionUseExample.sendPaymentTxWithSigned(fromSignedTxStr);
+        System.out.println("txHash=" + txHash);*/
 
+//        testSnailBalance(trueWeb3jRequest);
+//        testSnailReward(trueWeb3jRequest);
+//        testStakingAccount(trueWeb3jRequest);
+//        getAllStakingAccount(trueWeb3jRequest);
+//        getChainRewardContent(trueWeb3jRequest);
+    }
 
-        TrueWeb3jRequest trueWeb3jRequest = new TrueWeb3jRequest(Constant.RPC_MAINNET_URL);
+    public void test() {
+        TrueWeb3jRequest trueWeb3jRequest = new TrueWeb3jRequest(Constant.RPC_TESTNET_URL);
 
         //通过fastNumbe获取奖励的慢链高度snailNumber
         BigInteger requestFastNumber = new BigInteger("4760234");
-        EthBlock.Block fastBlock = trueWeb3jRequest.getFastBlockByNumber(requestFastNumber, false);
+        FastBlock fastBlock = trueWeb3jRequest.getFastBlockByNumber(requestFastNumber, false);
+
         /**
          * fastBlock的snailNumber为空,说明没有奖励慢链
          * 不为空，奖励的高度为snailNumber值
@@ -68,13 +74,6 @@ public class UseExmaple {
         for (RewardInfo rewardInfo : rewardInfos) {
             System.out.println(rewardInfo.toString());
         }
-
-
-//        testSnailBalance(trueWeb3jRequest);
-//        testSnailReward(trueWeb3jRequest);
-//        testStakingAccount(trueWeb3jRequest);
-//        getAllStakingAccount(trueWeb3jRequest);
-//        getChainRewardContent(trueWeb3jRequest);
     }
 
     public static void testStakingAccount(TrueWeb3jRequest trueWeb3jRequest) {
@@ -114,11 +113,8 @@ public class UseExmaple {
 
     public static void testSnailBalance(TrueWeb3jRequest trueWeb3jRequest) {
         trueWeb3jRequest.getSnailBalanceChange(new BigInteger("2"));
-        EthBlock.Block fastBlock = trueWeb3jRequest.getFastBlockByNumber(new BigInteger("2"), false);
+        FastBlock fastBlock = trueWeb3jRequest.getFastBlockByNumber(new BigInteger("2"), false);
         System.out.println("snailNumber=" + fastBlock.getSnailNumber());
-
-        EthBlock.Block fastBlock2 = trueWeb3jRequest.getFastBlockByNumber(new BigInteger("2311"), false);
-        System.out.println("snailNumber=" + fastBlock2.getSnailNumber());
 
         Map<String, String> addrWithBalance = trueWeb3jRequest.getSnailBalanceChange(new BigInteger("2"));
     }

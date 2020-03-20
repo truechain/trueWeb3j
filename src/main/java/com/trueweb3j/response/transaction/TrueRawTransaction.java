@@ -1,5 +1,6 @@
 package com.trueweb3j.response.transaction;
 
+import org.apache.commons.lang3.StringUtils;
 import org.web3j.utils.Numeric;
 
 import java.math.BigInteger;
@@ -32,9 +33,10 @@ public class TrueRawTransaction {
         this.fee = fee;
         this.payment = payment;
 
-        if (data != null) {
-            this.data = Numeric.cleanHexPrefix(data);
+        if (data == null) {
+            data = "";
         }
+        this.data = Numeric.cleanHexPrefix(data);
     }
 
     public TrueRawTransaction(SignedTrueRawTransaction signedTrueRawTransaction) {

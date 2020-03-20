@@ -29,12 +29,11 @@ public class TrueTransactionEncoder {
         byte[] encodedTransaction = encode(trueRawTransaction);
         Sign.SignatureData signatureData = Sign.signMessage(
                 encodedTransaction, credentials.getEcKeyPair());
-
         return encode(trueRawTransaction, signatureData);
     }
 
     //发送者签名
-    public static byte[] signMessage(
+    public static byte[] signMessageFrom(
             TrueRawTransaction trueRawTransaction, long chainId, Credentials credentials) {
         byte[] encodedTransaction = encode(trueRawTransaction, chainId);
 
@@ -70,12 +69,6 @@ public class TrueTransactionEncoder {
         return encodeP(trueRawTransaction, eip155SignatureData, eip155SignatureDataP);
     }
 
-//    public static Sign.SignatureData createEip155SignatureData(Sign.SignatureData signatureData, long chainId) {
-//        BigInteger v = Numeric.toBigInt(signatureData.getV());
-//        long c =(chainId << 1) + 8;
-//        v = v.add(BigInteger.valueOf(c));
-//        return new Sign.SignatureData(v.toByteArray(), signatureData.getR(), signatureData.getS());
-//    }
 
     public static Sign.SignatureData createEip155SignatureData(
             Sign.SignatureData signatureData, long chainId) {
