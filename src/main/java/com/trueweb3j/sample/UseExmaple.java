@@ -4,15 +4,11 @@ import com.trueweb3j.TrueWeb3jRequest;
 import com.trueweb3j.common.Constant;
 import com.trueweb3j.response.Reward.RewardInfo;
 import com.trueweb3j.response.Reward.SARewardInfos;
-import com.trueweb3j.response.fast.EthBlock;
 import com.trueweb3j.response.Reward.ChainRewardContent;
 import com.trueweb3j.response.fast.FastBlock;
 import com.trueweb3j.response.snail.SnailRewardContenet;
 import com.trueweb3j.response.staking.AllStakingAccount;
-import org.web3j.protocol.Web3j;
 import org.web3j.protocol.core.DefaultBlockParameter;
-import org.web3j.protocol.core.methods.response.EthBlockNumber;
-import org.web3j.protocol.http.HttpService;
 
 import java.math.BigInteger;
 import java.util.List;

@@ -3,7 +3,6 @@ package com.trueweb3j;
 import com.trueweb3j.response.*;
 import com.trueweb3j.response.Reward.ChainRewardContent;
 import com.trueweb3j.response.committee.CommitteeInfo;
-import com.trueweb3j.response.fast.EthBlock;
 import com.trueweb3j.response.fast.FastBlock;
 import com.trueweb3j.response.snail.BalanceChange;
 import com.trueweb3j.response.snail.SnailBlock;
