@@ -33,6 +33,8 @@ public class Constant {
 
     public static String BLOCK_BYNUMBER = "eth_getBlockByNumber";
 
+    public static String CURRENT_BLOCK_NUMBER = "etrue_blockNumber";
+
     public static String SNAIL_REWARD_CONTENT = "etrue_getSnailRewardContent";
 
     public static String STAKING_ACCOUNT = "impawn_getStakingAccount";

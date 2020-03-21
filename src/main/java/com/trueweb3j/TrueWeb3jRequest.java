@@ -14,15 +14,13 @@ import org.web3j.protocol.Web3jService;
 import org.web3j.protocol.core.DefaultBlockParameter;
 import org.web3j.protocol.core.DefaultBlockParameterName;
 import org.web3j.protocol.core.Request;
+import org.web3j.protocol.core.methods.response.EthBlockNumber;
 import org.web3j.protocol.http.HttpService;
 import com.trueweb3j.common.Constant;
 import org.web3j.utils.Numeric;
 
 import java.math.BigInteger;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class TrueWeb3jRequest {
     public static Web3jService web3jService = null;
@@ -76,6 +74,22 @@ public class TrueWeb3jRequest {
         }
         return fastBlock;
     }
+
+    public BigInteger getCurrentFastNumber(BigInteger fastBlockNumber, boolean returnFullTransactionObjects) {
+        BigInteger fastNumber = null;
+        try {
+            EtrueFastBlockNumber etrueFastBlockNumber = new Request<>(
+                    Constant.CURRENT_BLOCK_NUMBER,
+                    Arrays.asList(DefaultBlockParameter.valueOf(fastBlockNumber).getValue(), returnFullTransactionObjects),
+                    web3jService,
+                    EtrueFastBlockNumber.class).send();
+            fastNumber = etrueFastBlockNumber.getBlockNumber();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return fastNumber;
+    }
+
 
     public SnailRewardContenet getSnailRewardContent(BigInteger snailNumber) {
         System.out.println("go into getSnailRewardContent");
