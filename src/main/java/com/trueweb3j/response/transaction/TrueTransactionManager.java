@@ -102,6 +102,7 @@ public class TrueTransactionManager {
 
 
     /**
+     * sign with from and payment private
      * @param trueRawTransaction trueTransaction info
      * @param fromPrivateKey     tx from privatekey
      * @param paymentPrivateKey  tx payment privatekey
