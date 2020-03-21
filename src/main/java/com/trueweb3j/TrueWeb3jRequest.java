@@ -2,6 +2,8 @@ package com.trueweb3j;
 
 import com.trueweb3j.response.*;
 import com.trueweb3j.response.Reward.ChainRewardContent;
+import com.trueweb3j.response.Reward.RewardInfo;
+import com.trueweb3j.response.Reward.SARewardInfos;
 import com.trueweb3j.response.committee.CommitteeInfo;
 import com.trueweb3j.response.fast.FastBlock;
 import com.trueweb3j.response.snail.BalanceChange;
@@ -33,6 +35,56 @@ public class TrueWeb3jRequest {
         web3jService = new HttpService(rpcUrl);
     }
 
+    /**
+     * get FastBlock by fastNumber
+     *
+     * @param fastBlockNumber
+     * @param returnFullTransactionObjects
+     * @return
+     */
+    public FastBlock getFastBlockByNumber(BigInteger fastBlockNumber, boolean returnFullTransactionObjects) {
+        FastBlock fastBlock = null;
+        try {
+            EtrueFastBlock etrueFastBlock = new Request<>(
+                    Constant.BLOCK_BYNUMBER,
+                    Arrays.asList(DefaultBlockParameter.valueOf(fastBlockNumber).getValue(), returnFullTransactionObjects),
+                    web3jService,
+                    EtrueFastBlock.class).send();
+            fastBlock = etrueFastBlock.getFastBlock();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return fastBlock;
+    }
+
+    /**
+     * get current fastNumber on the chain
+     *
+     * @param fastBlockNumber
+     * @param returnFullTransactionObjects
+     * @return
+     */
+    public BigInteger getCurrentFastNumber(BigInteger fastBlockNumber, boolean returnFullTransactionObjects) {
+        BigInteger fastNumber = null;
+        try {
+            EtrueFastBlockNumber etrueFastBlockNumber = new Request<>(
+                    Constant.CURRENT_BLOCK_NUMBER,
+                    Arrays.asList(DefaultBlockParameter.valueOf(fastBlockNumber).getValue(), returnFullTransactionObjects),
+                    web3jService,
+                    EtrueFastBlockNumber.class).send();
+            fastNumber = etrueFastBlockNumber.getBlockNumber();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return fastNumber;
+    }
+
+    /**
+     * get snail reward address and balance of the address
+     *
+     * @param snailBlockNumber
+     * @return
+     */
     public Map<String, String> getSnailBalanceChange(BigInteger snailBlockNumber) {
         Map<String, String> addrWithBalance = new HashMap<String, String>();
         try {
@@ -55,61 +107,35 @@ public class TrueWeb3jRequest {
     }
 
     /**
-     * @param fastBlockNumber
-     * @param returnFullTransactionObjects
+     * get snail reward content:
+     * inclued blockminer、fruitminer、committeReward、foundationReward
+     *
+     * @param snailNumber
      * @return
      */
+    public ChainRewardContent getSnailRewardContent(BigInteger snailNumber) {
+        ChainRewardContent chainRewardContent = null;
 
-    public FastBlock getFastBlockByNumber(BigInteger fastBlockNumber, boolean returnFullTransactionObjects) {
-        FastBlock fastBlock = null;
+        if (snailNumber == null) {
+            return null;
+        }
+        DefaultBlockParameter blockParameter = DefaultBlockParameter.valueOf(snailNumber);
         try {
-            EtrueFastBlock etrueFastBlock = new Request<>(
-                    Constant.BLOCK_BYNUMBER,
-                    Arrays.asList(DefaultBlockParameter.valueOf(fastBlockNumber).getValue(), returnFullTransactionObjects),
+            EtrueChainRewardContent etrueChainRewardContent = new Request<>(
+                    Constant.CHAIN_REWARD_CONTENT,
+                    Arrays.asList(blockParameter.getValue(), Constant.EMPTY_ADDRESS),
                     web3jService,
-                    EtrueFastBlock.class).send();
-            fastBlock = etrueFastBlock.getFastBlock();
+                    EtrueChainRewardContent.class).send();
+            chainRewardContent = etrueChainRewardContent.getChainRewardContent();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return fastBlock;
-    }
-
-    public BigInteger getCurrentFastNumber(BigInteger fastBlockNumber, boolean returnFullTransactionObjects) {
-        BigInteger fastNumber = null;
-        try {
-            EtrueFastBlockNumber etrueFastBlockNumber = new Request<>(
-                    Constant.CURRENT_BLOCK_NUMBER,
-                    Arrays.asList(DefaultBlockParameter.valueOf(fastBlockNumber).getValue(), returnFullTransactionObjects),
-                    web3jService,
-                    EtrueFastBlockNumber.class).send();
-            fastNumber = etrueFastBlockNumber.getBlockNumber();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return fastNumber;
-    }
-
-
-    public SnailRewardContenet getSnailRewardContent(BigInteger snailNumber) {
-        System.out.println("go into getSnailRewardContent");
-        SnailRewardContenet snailRewardContenet = null;
-        try {
-            EtrueSnailRewardContent etrueSnailRewardContent = new Request<>(
-                    Constant.SNAIL_REWARD_CONTENT,
-                    Arrays.asList(DefaultBlockParameter.valueOf(snailNumber).getValue()),
-                    web3jService,
-                    EtrueSnailRewardContent.class).send();
-            snailRewardContenet = etrueSnailRewardContent.getSnailRewardContenet();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return snailRewardContenet;
+        return chainRewardContent;
     }
 
 
     /**
-     * getSnailBlock by snailNumber
+     * get snail Block by snailNumber
      *
      * @param snailNumber
      * @param inclFruit   whether include fruits info
@@ -137,8 +163,8 @@ public class TrueWeb3jRequest {
      * @param snailNumber
      * @return if return null, donnot have generate the snailNumber
      */
-    public String GetSnailHashByNumber(BigInteger snailNumber) {
-        System.out.println("go into GetSnailHashByNumber");
+    public String getSnailHashByNumber(BigInteger snailNumber) {
+        System.out.println("go into getSnailHashByNumber");
         String snailHash = null;
         try {
             EtrueSnailHash etrueSnailHash = new Request<>(
@@ -152,28 +178,6 @@ public class TrueWeb3jRequest {
         }
         return snailHash;
     }
-
-    /**
-     * get current snail block number
-     *
-     * @return
-     */
-    public BigInteger getCurrentSnailNumber() {
-        System.out.println("go into GetSnailHashByNumber");
-        BigInteger snailNumber = null;
-        try {
-            EtrueSnailBlockNumber etrueSnailBlockNumber = new Request<>(
-                    Constant.SNAIL_BLOCK_NUMBER,
-                    Arrays.asList(),
-                    web3jService,
-                    EtrueSnailBlockNumber.class).send();
-            snailNumber = etrueSnailBlockNumber.getSnailBlockNumber();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return snailNumber;
-    }
-
 
     /**
      * get snailBlock by snailHash
@@ -199,6 +203,28 @@ public class TrueWeb3jRequest {
     }
 
     /**
+     * get current snail block number
+     *
+     * @return
+     */
+    public BigInteger getCurrentSnailNumber() {
+        System.out.println("go into getCurrentSnailNumber");
+        BigInteger snailNumber = null;
+        try {
+            EtrueSnailBlockNumber etrueSnailBlockNumber = new Request<>(
+                    Constant.SNAIL_BLOCK_NUMBER,
+                    Arrays.asList(),
+                    web3jService,
+                    EtrueSnailBlockNumber.class).send();
+            snailNumber = etrueSnailBlockNumber.getSnailBlockNumber();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return snailNumber;
+    }
+
+
+    /**
      * get committeeInfo by committeeNumber
      *
      * @param committeeNumber
@@ -220,6 +246,11 @@ public class TrueWeb3jRequest {
         return committeeInfo;
     }
 
+    /**
+     * get current committee number
+     *
+     * @return
+     */
     public Integer getCurrentCommitteeNumber() {
         System.out.println("go into getCurrentCommitteeNumber");
         Integer currentCommitteeNumber = null;
@@ -236,22 +267,12 @@ public class TrueWeb3jRequest {
         return currentCommitteeNumber;
     }
 
-    /*public String etrueSendTrueRawTransaction(String signedTransactionData) {
-        System.out.println("go into sendTrueRawTransaction");
-        String trueTransactionhash = null;
-        try {
-            EtrueSendTrueTransaction etrueSendTrueTransaction = new Request<>(
-                    Constant.SEND_TRUE_RAW_TRANSACTION,
-                    Arrays.asList(signedTransactionData),
-                    web3jService,
-                    EtrueSendTrueTransaction.class).send();
-            trueTransactionhash = etrueSendTrueTransaction.getTrueTransactionHash();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return trueTransactionhash;
-    }*/
-
+    /**
+     * send true raw transaction
+     *
+     * @param signedTransactionData
+     * @return
+     */
     public EtrueSendTransaction etrueSendRawTransaction(String signedTransactionData) {
         System.out.println("go into etrueSendTrueRawTransaction");
         EtrueSendTransaction etrueSendTrueTransaction = null;
@@ -289,50 +310,69 @@ public class TrueWeb3jRequest {
         return balanceChange;
     }
 
-
-    /////////////////////////
-
-
+    /**
+     * get gather addresses snail reward by snailNumber
+     *
+     * @param snailNumber
+     * @return
+     */
     public Map<String, BigInteger> getAddressesSnailReward(BigInteger snailNumber) {
         //慢链奖励中涉及所有的地址
         Map<String, BigInteger> snailRewardWithAddr = new HashMap<String, BigInteger>();
-        SnailRewardContenet snailRewardContent = getSnailRewardContent(snailNumber);
-        if (snailRewardContent == null) {
+        ChainRewardContent chainRewardContent = getSnailRewardContent(snailNumber);
+        if (chainRewardContent == null) {
             return snailRewardWithAddr;
         }
 
-        Map<String, BigInteger> blockReward = snailRewardContent.getBlockminer();
-        gatherAddressBalance(snailRewardWithAddr, blockReward);
+        RewardInfo minerRewardInfo = chainRewardContent.getBlockminer();
+        gatherAddressBalance(snailRewardWithAddr, minerRewardInfo);
 
-        Map<String, BigInteger> committeReward = snailRewardContent.getCommitteReward();
-        gatherAddressBalance(snailRewardWithAddr, committeReward);
+        RewardInfo foundationRewardInfo = chainRewardContent.getFoundationReward();
+        gatherAddressBalance(snailRewardWithAddr, foundationRewardInfo);
 
-        Map<String, BigInteger> foundationReward = snailRewardContent.getFoundationReward();
-        gatherAddressBalance(snailRewardWithAddr, foundationReward);
-
-        List<Map<String, BigInteger>> fruitMinerList = snailRewardContent.getFruitminer();
-        for (Map<String, BigInteger> fruitMiner : fruitMinerList) {
-            gatherAddressBalance(snailRewardWithAddr, fruitMiner);
+        List<RewardInfo> fruitRewardInfos = chainRewardContent.getFruitminer();
+        if (fruitRewardInfos != null && fruitRewardInfos.size() != 0) {
+            for (RewardInfo fruitRewardInfo : fruitRewardInfos) {
+                gatherAddressBalance(snailRewardWithAddr, fruitRewardInfo);
+            }
         }
-        return snailRewardWithAddr;
-    }
 
-    private Map<String, BigInteger> gatherAddressBalance(Map<String, BigInteger> snailRewardWithAddr, Map<String, BigInteger> rewardMap) {
-        if (rewardMap == null) {
-            return snailRewardWithAddr;
-        }
-        for (Map.Entry<String, BigInteger> entry : rewardMap.entrySet()) {
-            if (snailRewardWithAddr.get(entry.getKey()) != null) {
-                BigInteger balance = snailRewardWithAddr.get(entry.getKey());
-                balance = balance.add(entry.getValue());
-                snailRewardWithAddr.put(entry.getKey(), balance);
-            } else {
-                snailRewardWithAddr.put(entry.getKey(), entry.getValue());
+        List<SARewardInfos> saRewardInfosList = chainRewardContent.getCommitteReward();
+        if (saRewardInfosList != null && saRewardInfosList.size() > 0) {
+            for (SARewardInfos saRewardInfo : saRewardInfosList) {
+                if (saRewardInfo != null && saRewardInfo.getItems() != null
+                        && saRewardInfo.getItems().size() != 0) {
+                    for (RewardInfo committeeRewardInfo : saRewardInfo.getItems()) {
+                        gatherAddressBalance(snailRewardWithAddr, committeeRewardInfo);
+                    }
+                }
             }
         }
         return snailRewardWithAddr;
     }
 
+    private Map<String, BigInteger> gatherAddressBalance(
+            Map<String, BigInteger> snailRewardWithAddr, RewardInfo rewardInfo) {
+        if (rewardInfo == null) {
+            return snailRewardWithAddr;
+        }
+        String address = rewardInfo.getAddress();
+        if (snailRewardWithAddr.get(address) != null) {
+            BigInteger balance = snailRewardWithAddr.get(address);
+            balance = balance.add(rewardInfo.getAmount());
+            snailRewardWithAddr.put(address, balance);
+        } else {
+            snailRewardWithAddr.put(address, rewardInfo.getAmount());
+        }
+        return snailRewardWithAddr;
+    }
+
+    /**
+     * get staking info by account
+     * @param epochid
+     * @param account
+     * @return
+     */
     public StakingAccountInfo getStakingAccountInfo(BigInteger epochid, String account) {
         StakingAccountInfo stakingAccountInfo = null;
         try {
@@ -350,11 +390,15 @@ public class TrueWeb3jRequest {
         return stakingAccountInfo;
     }
 
-    public AllStakingAccount getAllStakingAccount(DefaultBlockParameter defaultBlockParameter) {
+    /**
+     * get all staking account infos
+     * @return
+     */
+    public AllStakingAccount getAllStakingAccount() {
         AllStakingAccount allStakingAccount = null;
         try {
             EtrueAllStakingAccountInfo etrueAllStakingAccountInfo = new Request<>(
-                    Constant.ALLSTAKING_ACCOUNT,
+                    Constant.ALL_STAKING_ACCOUNT,
                     Arrays.asList(DefaultBlockParameterName.LATEST),
                     web3jService,
                     EtrueAllStakingAccountInfo.class).send();
@@ -366,8 +410,7 @@ public class TrueWeb3jRequest {
     }
 
     /**
-     * 获取某个质押节点下所有委托地址的收益
-     *
+     * get the proceeds of all the delegate addresses under a pledge node
      * @param snailNumber
      * @param stakingAddress
      * @return

@@ -29,17 +29,19 @@ public class Constant {
 
     public static BigInteger DEFAULT_FEE = Convert.toWei("1", Convert.Unit.ETHER).toBigInteger();
 
+    public static String EMPTY_ADDRESS = "0x0000000000000000000000000000000000000000";
+
     public static String BALANCE_CHANGE_BY_SNAIL_NUMBER = "etrue_getBalanceChangeBySnailNumber";
 
     public static String BLOCK_BYNUMBER = "eth_getBlockByNumber";
 
     public static String CURRENT_BLOCK_NUMBER = "etrue_blockNumber";
 
-    public static String SNAIL_REWARD_CONTENT = "etrue_getSnailRewardContent";
+//    public static String SNAIL_REWARD_CONTENT = "etrue_getSnailRewardContent";
 
     public static String STAKING_ACCOUNT = "impawn_getStakingAccount";
 
-    public static String ALLSTAKING_ACCOUNT = "impawn_getAllStakingAccount";
+    public static String ALL_STAKING_ACCOUNT = "impawn_getAllStakingAccount";
 
     public static String CHAIN_REWARD_CONTENT = "etrue_getChainRewardContent";
 

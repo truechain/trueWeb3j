@@ -80,9 +80,9 @@ public class UseExmaple {
 
     public static void testStakingAccount(TrueWeb3jRequest trueWeb3jRequest) {
         BigInteger snailNumber = new BigInteger("2");
-        SnailRewardContenet snailRewardContenet = trueWeb3jRequest.getSnailRewardContent(snailNumber);
+        ChainRewardContent snailChainRewardContent = trueWeb3jRequest.getSnailRewardContent(snailNumber);
         Map<String, BigInteger> addressSnailReward = trueWeb3jRequest.getAddressesSnailReward(snailNumber);
-        System.out.println("size=" + snailRewardContenet.getFruitminer());
+        System.out.println("size=" + snailChainRewardContent.getFruitminer());
     }
 
     public static void getChainRewardContent(TrueWeb3jRequest trueWeb3jRequest) {
@@ -108,9 +108,9 @@ public class UseExmaple {
 
     public static void testSnailReward(TrueWeb3jRequest trueWeb3jRequest) {
         BigInteger snailNumber = new BigInteger("2");
-        SnailRewardContenet snailRewardContenet = trueWeb3jRequest.getSnailRewardContent(snailNumber);
+        ChainRewardContent snailChainRewardContent = trueWeb3jRequest.getSnailRewardContent(snailNumber);
         Map<String, BigInteger> addressSnailReward = trueWeb3jRequest.getAddressesSnailReward(snailNumber);
-        System.out.println("size=" + snailRewardContenet.getFruitminer());
+        System.out.println("size=" + snailChainRewardContent.getFruitminer());
     }
 
     public static void testSnailBalance(TrueWeb3jRequest trueWeb3jRequest) {

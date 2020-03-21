@@ -1,5 +1,9 @@
 package com.trueweb3j.response.Reward;
 
+import org.web3j.utils.Numeric;
+
+import java.math.BigInteger;
+
 public class RewardInfo {
     public String Address;
 
@@ -15,9 +19,14 @@ public class RewardInfo {
         Address = address;
     }
 
-    public String getAmount() {
+    public BigInteger getAmount() {
+        return Numeric.decodeQuantity(Amount);
+    }
+
+    public String getAmountRaw() {
         return Amount;
     }
+
 
     public void setAmount(String amount) {
         Amount = amount;
