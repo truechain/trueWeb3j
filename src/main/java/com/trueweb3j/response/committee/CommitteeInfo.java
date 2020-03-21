@@ -46,6 +46,18 @@ public class CommitteeInfo {
     }
 
 
+    @Override
+    public String toString() {
+        return "CommitteeInfo{" +
+                "beginSnailNumber='" + beginSnailNumber + '\'' +
+                ", endSnailNumber='" + endSnailNumber + '\'' +
+                ", memberCount='" + memberCount + '\'' +
+                ", beginNumber='" + beginNumber + '\'' +
+                ", endNumber='" + endNumber + '\'' +
+                ", members=" + members +
+                '}';
+    }
+
     public static class CommitteeMember {
         public String coinbase;
         public String PKey;
@@ -82,6 +94,16 @@ public class CommitteeInfo {
 
         public void setType(String type) {
             this.type = type;
+        }
+
+        @Override
+        public String toString() {
+            return "CommitteeMember{" +
+                    "coinbase='" + coinbase + '\'' +
+                    ", PKey='" + PKey + '\'' +
+                    ", flag='" + flag + '\'' +
+                    ", type='" + type + '\'' +
+                    '}';
         }
 
         public static class ResponseDeserialiser extends JsonDeserializer<CommitteeMember> {

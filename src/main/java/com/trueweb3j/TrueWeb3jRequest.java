@@ -25,7 +25,7 @@ import java.math.BigInteger;
 import java.util.*;
 
 public class TrueWeb3jRequest {
-    public static Web3jService web3jService = null;
+    public Web3jService web3jService = null;
 
     private TrueWeb3jRequest() {
 
@@ -33,6 +33,10 @@ public class TrueWeb3jRequest {
 
     public TrueWeb3jRequest(String rpcUrl) {
         web3jService = new HttpService(rpcUrl);
+    }
+
+    public TrueWeb3jRequest(HttpService httpService) {
+        this.web3jService = httpService;
     }
 
     /**
@@ -64,12 +68,12 @@ public class TrueWeb3jRequest {
      * @param returnFullTransactionObjects
      * @return
      */
-    public BigInteger getCurrentFastNumber(BigInteger fastBlockNumber, boolean returnFullTransactionObjects) {
+    public BigInteger getCurrentFastNumber() {
         BigInteger fastNumber = null;
         try {
             EtrueFastBlockNumber etrueFastBlockNumber = new Request<>(
                     Constant.CURRENT_BLOCK_NUMBER,
-                    Arrays.asList(DefaultBlockParameter.valueOf(fastBlockNumber).getValue(), returnFullTransactionObjects),
+                    Arrays.asList(),
                     web3jService,
                     EtrueFastBlockNumber.class).send();
             fastNumber = etrueFastBlockNumber.getBlockNumber();
@@ -96,9 +100,9 @@ public class TrueWeb3jRequest {
             BalanceChange balanceChange = etrueBalanceChange.getBalanceChange();
             if (balanceChange != null) {
                 addrWithBalance = balanceChange.getAddrWithBalance();
-                for (Map.Entry<String, String> entry : addrWithBalance.entrySet()) {
+                /*for (Map.Entry<String, String> entry : addrWithBalance.entrySet()) {
                     System.out.println("key= " + entry.getKey() + " and value= " + entry.getValue());
-                }
+                }*/
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -369,6 +373,7 @@ public class TrueWeb3jRequest {
 
     /**
      * get staking info by account
+     *
      * @param epochid
      * @param account
      * @return
@@ -392,9 +397,10 @@ public class TrueWeb3jRequest {
 
     /**
      * get all staking account infos
+     *
      * @return
      */
-    public AllStakingAccount getAllStakingAccount() {
+    public AllStakingAccount getAllStakingAccount(DefaultBlockParameter defaultBlockParameter) {
         AllStakingAccount allStakingAccount = null;
         try {
             EtrueAllStakingAccountInfo etrueAllStakingAccountInfo = new Request<>(
@@ -411,6 +417,7 @@ public class TrueWeb3jRequest {
 
     /**
      * get the proceeds of all the delegate addresses under a pledge node
+     *
      * @param snailNumber
      * @param stakingAddress
      * @return

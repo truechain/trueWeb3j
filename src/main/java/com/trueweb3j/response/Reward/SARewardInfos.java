@@ -12,4 +12,11 @@ public class SARewardInfos {
     public void setItems(List<RewardInfo> items) {
         Items = items;
     }
+
+    @Override
+    public String toString() {
+        return "SARewardInfos{" +
+                "Items=" + Items +
+                '}';
+    }
 }

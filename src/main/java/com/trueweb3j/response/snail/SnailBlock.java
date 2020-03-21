@@ -172,7 +172,25 @@ public class SnailBlock {
         this.endFruitNumber = endFruitNumber;
     }
 
-
+    @Override
+    public String toString() {
+        return "SnailBlock{" +
+                "number='" + number + '\'' +
+                ", hash='" + hash + '\'' +
+                ", parentHash='" + parentHash + '\'' +
+                ", fruitsHash='" + fruitsHash + '\'' +
+                ", nonce='" + nonce + '\'' +
+                ", mixHash='" + mixHash + '\'' +
+                ", miner='" + miner + '\'' +
+                ", difficulty='" + difficulty + '\'' +
+                ", extraData='" + extraData + '\'' +
+                ", size='" + size + '\'' +
+                ", timestamp='" + timestamp + '\'' +
+                ", beginFruitNumber='" + beginFruitNumber + '\'' +
+                ", endFruitNumber='" + endFruitNumber + '\'' +
+                ", fruits=" + fruits +
+                '}';
+    }
 
     public static class ResponseDeserialiser extends JsonDeserializer<SnailBlock> {
         private ObjectReader objectReader = ObjectMapperFactory.getObjectReader();

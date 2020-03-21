@@ -80,6 +80,17 @@ public class Fruit {
         this.difficulty = difficulty;
     }
 
+    @Override
+    public String toString() {
+        return "Fruit{" +
+                "number='" + number + '\'' +
+                ", hash='" + hash + '\'' +
+                ", nonce='" + nonce + '\'' +
+                ", miner='" + miner + '\'' +
+                ", difficulty='" + difficulty + '\'' +
+                '}';
+    }
+
     public static class ResponseDeserialiser extends JsonDeserializer<Fruit> {
         private ObjectReader objectReader = ObjectMapperFactory.getObjectReader();
 

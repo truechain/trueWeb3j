@@ -6,7 +6,6 @@ import com.trueweb3j.response.Reward.RewardInfo;
 import com.trueweb3j.response.Reward.SARewardInfos;
 import com.trueweb3j.response.Reward.ChainRewardContent;
 import com.trueweb3j.response.fast.FastBlock;
-import com.trueweb3j.response.snail.SnailRewardContenet;
 import com.trueweb3j.response.staking.AllStakingAccount;
 import org.web3j.protocol.core.DefaultBlockParameter;
 
@@ -17,7 +16,7 @@ import java.util.Map;
 public class UseExmaple {
 
     public static void main(String[] args) {
-        PaymentTransactionUseExample paymentTransactionUseExample = new PaymentTransactionUseExample();
+        PaymentTransactionUsage paymentTransactionUseExample = new PaymentTransactionUsage();
 //        System.out.println(paymentTransactionUseExample.sendPaymentTx());
 
         /*String fromSignedTxStr =paymentTransactionUseExample.sendPaymentTxWithFrom();
@@ -119,6 +118,8 @@ public class UseExmaple {
         System.out.println("snailNumber=" + fastBlock.getSnailNumber());
 
         Map<String, String> addrWithBalance = trueWeb3jRequest.getSnailBalanceChange(new BigInteger("2"));
+
+
     }
 
 }

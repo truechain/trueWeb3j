@@ -18,7 +18,7 @@ import org.web3j.utils.Numeric;
 
 import java.math.BigInteger;
 
-public class PaymentTransactionUseExample {
+public class PaymentTransactionUsage {
     //发送者账户
     String fromPrivatekey = AddressConstant.fromPrivateKey;
     String fromAddress = AddressConstant.fromAddress;

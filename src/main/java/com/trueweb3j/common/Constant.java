@@ -33,7 +33,7 @@ public class Constant {
 
     public static String BALANCE_CHANGE_BY_SNAIL_NUMBER = "etrue_getBalanceChangeBySnailNumber";
 
-    public static String BLOCK_BYNUMBER = "eth_getBlockByNumber";
+    public static String BLOCK_BYNUMBER = "etrue_getBlockByNumber";
 
     public static String CURRENT_BLOCK_NUMBER = "etrue_blockNumber";
 
