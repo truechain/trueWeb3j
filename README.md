@@ -1,12 +1,10 @@
 # trueWeb3j
 Truechain RPC service interface call based on Web3j
 
-- [QuickStart](https://github.com/truechain/tweb3j-sample/blob/master/src/main/java/com/truechain/QuickStart.java) 
-快速开始:判断程序能否连接到truechain网络 rpc节点
 
 RPC interface name and specification:
 
-FastBlock:
+- [FastBlock](https://github.com/truechain/trueWeb3j/blob/master/src/main/java/com/trueweb3j/sample/FastBlockUsage.java)
 getFastBlockByNumber: get FastBlock by fastNumber
 getCurrentFastNumber: get current fastNumber on the chain
 
