@@ -315,7 +315,7 @@ public class TrueWeb3jRequest {
     }
 
     /**
-     * get balance change with addresses by fast number
+     * get balance with address which has changed by fast number
      *
      * @param fastNumber
      * @return

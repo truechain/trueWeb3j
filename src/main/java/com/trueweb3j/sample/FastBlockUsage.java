@@ -28,6 +28,7 @@ public class FastBlockUsage extends TrueWeb3jTestNet {
     }
 
     /**
+     * useage:
      * get balance with address which has changed
      */
     public void getStateChangeByFastNumber() {
