@@ -1,23 +1,28 @@
-import com.trueweb3j.response.fast.FastBlock;
+import com.trueweb3j.sample.FastBlockUsage;
+import org.junit.Before;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import java.math.BigInteger;
+public class FastBlockTest {
 
-public class FastBlockTest extends  TrueWeb3jRequestTest{
-    private static final Logger logger = LoggerFactory.getLogger(FastBlockTest.class);
+    FastBlockUsage fastBlockUsage;
+
+    @Before
+    public void init() {
+        fastBlockUsage = new FastBlockUsage();
+    }
 
     @Test
     public void testGetFastBlockByNumber() {
-        BigInteger fastNumber = new BigInteger("100");
-        FastBlock fastBlock = trueWeb3jRequest.getFastBlockByNumber(fastNumber, true);
-        logger.info("fast number=[{}]", fastBlock.getNumber());
+        fastBlockUsage.getFastBlockByNumber();
+    }
+
+    @Test
+    public void testGetFastBlockByHash() {
+        fastBlockUsage.getFastBlockByHash();
     }
 
     @Test
     public void testGetCurrentFastNumber() {
-        BigInteger currentFastNumber = trueWeb3jRequest.getCurrentFastNumber();
-        logger.info("current fast number=[{}]", currentFastNumber);
+        fastBlockUsage.getCurrentFastNumber();
     }
 }

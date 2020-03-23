@@ -1,4 +1,7 @@
 import com.trueweb3j.response.committee.CommitteeInfo;
+import com.trueweb3j.sample.CommitteeUsage;
+import com.trueweb3j.sample.FastBlockUsage;
+import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -6,18 +9,20 @@ import org.slf4j.LoggerFactory;
 import java.math.BigInteger;
 
 public class CommitteeTest extends TrueWeb3jRequestTest {
-    private static final Logger logger = LoggerFactory.getLogger(CommitteeTest.class);
+    private CommitteeUsage committeeUsage;
+
+    @Before
+    public void init() {
+        committeeUsage = new CommitteeUsage();
+    }
 
     @Test
     public void testGetCommitteeByNumber() {
-        BigInteger committeeNumber = new BigInteger("100");
-        CommitteeInfo committeeInfo = trueWeb3jRequest.getCommitteeByNumber(committeeNumber);
-        logger.info("committeeInfo=[{}]", committeeInfo);
+        committeeUsage.getCommitteeByNumber();
     }
 
     @Test
     public void testGetCurrentCommitteeNumber() {
-        Integer currentCommitteeNumber = trueWeb3jRequest.getCurrentCommitteeNumber();
-        logger.info("current committee number=[{}]", currentCommitteeNumber);
+        committeeUsage.testGetCurrentCommitteeNumber();
     }
 }

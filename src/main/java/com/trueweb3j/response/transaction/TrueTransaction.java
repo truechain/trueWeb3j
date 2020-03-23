@@ -325,4 +325,32 @@ public class TrueTransaction {
             this.pv = (Long) pv;
         }
     }
+
+    @Override
+    public String toString() {
+        return "TrueTransaction{" +
+                "hash='" + hash + '\'' +
+                ", nonce='" + nonce + '\'' +
+                ", blockHash='" + blockHash + '\'' +
+                ", blockNumber='" + blockNumber + '\'' +
+                ", transactionIndex='" + transactionIndex + '\'' +
+                ", from='" + from + '\'' +
+                ", to='" + to + '\'' +
+                ", value='" + value + '\'' +
+                ", gasPrice='" + gasPrice + '\'' +
+                ", gas='" + gas + '\'' +
+                ", input='" + input + '\'' +
+                ", creates='" + creates + '\'' +
+                ", publicKey='" + publicKey + '\'' +
+                ", raw='" + raw + '\'' +
+                ", r='" + r + '\'' +
+                ", s='" + s + '\'' +
+                ", v=" + v +
+                ", fee='" + fee + '\'' +
+                ", payer='" + payer + '\'' +
+                ", pr='" + pr + '\'' +
+                ", ps='" + ps + '\'' +
+                ", pv=" + pv +
+                '}';
+    }
 }

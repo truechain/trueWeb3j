@@ -16,6 +16,7 @@ import org.web3j.protocol.Web3jService;
 import org.web3j.protocol.core.DefaultBlockParameter;
 import org.web3j.protocol.core.DefaultBlockParameterName;
 import org.web3j.protocol.core.Request;
+import org.web3j.protocol.core.methods.response.EthBlock;
 import org.web3j.protocol.core.methods.response.EthBlockNumber;
 import org.web3j.protocol.http.HttpService;
 import com.trueweb3j.common.Constant;
@@ -62,10 +63,30 @@ public class TrueWeb3jRequest {
     }
 
     /**
+     * get FastBlock by hash
+     *
+     * @param fastHash
+     * @param returnFullTransactionObjects
+     * @return
+     */
+    public FastBlock getFastBlockByHash(String fastHash, boolean returnFullTransactionObjects) {
+        FastBlock fastBlock = null;
+        try {
+            EtrueFastBlock etrueFastBlock = new Request<>(
+                    Constant.BLOCK_BYHASH,
+                    Arrays.asList(fastHash, returnFullTransactionObjects),
+                    web3jService,
+                    EtrueFastBlock.class).send();
+            fastBlock = etrueFastBlock.getFastBlock();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return fastBlock;
+    }
+
+    /**
      * get current fastNumber on the chain
      *
-     * @param fastBlockNumber
-     * @param returnFullTransactionObjects
      * @return
      */
     public BigInteger getCurrentFastNumber() {

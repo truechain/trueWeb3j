@@ -265,6 +265,13 @@ public class FastBlock {
         public int hashCode() {
             return value != null ? value.hashCode() : 0;
         }
+
+        @Override
+        public String toString() {
+            return "TransactionHash{" +
+                    "value='" + value + '\'' +
+                    '}';
+        }
     }
 
     public static class TransactionObject extends TrueTransaction
@@ -428,5 +435,28 @@ public class FastBlock {
         result = 31 * result + (getTimestampRaw() != null ? getTimestampRaw().hashCode() : 0);
         result = 31 * result + (getTransactions() != null ? getTransactions().hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "FastBlock{" +
+                "number='" + number + '\'' +
+                ", hash='" + hash + '\'' +
+                ", parentHash='" + parentHash + '\'' +
+                ", committeeRoot='" + committeeRoot + '\'' +
+                ", maker='" + maker + '\'' +
+                ", logsBloom='" + logsBloom + '\'' +
+                ", stateRoot='" + stateRoot + '\'' +
+                ", snailNumber='" + snailNumber + '\'' +
+                ", snailHash='" + snailHash + '\'' +
+                ", extraData='" + extraData + '\'' +
+                ", size='" + size + '\'' +
+                ", gasLimit='" + gasLimit + '\'' +
+                ", gasUsed='" + gasUsed + '\'' +
+                ", timestamp='" + timestamp + '\'' +
+                ", transactionsRoot='" + transactionsRoot + '\'' +
+                ", receiptsRoot='" + receiptsRoot + '\'' +
+                ", transactions=" + transactions +
+                '}';
     }
 }

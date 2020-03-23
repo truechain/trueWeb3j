@@ -19,14 +19,6 @@ public class TrueWeb3jRequestTest {
 
     public Web3j web3j = null;
 
-    //发送者账户
-    String fromPrivatekey = AddressConstant.fromPrivateKey;
-    String fromAddress = AddressConstant.fromAddress;
-    String to = AddressConstant.toAddress;
-
-    String paymentPrivateKey = AddressConstant.paymentPrivatekey;
-    String paymentAddress = AddressConstant.paymentAddress;
-
     @Before
     public void init() {
         trueWeb3jRequest = new TrueWeb3jRequest(Constant.RPC_TESTNET_URL);
