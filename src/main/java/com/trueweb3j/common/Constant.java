@@ -41,14 +41,11 @@ public class Constant {
 
     public static String CURRENT_BLOCK_NUMBER = "etrue_blockNumber";
 
-//    public static String SNAIL_REWARD_CONTENT = "etrue_getSnailRewardContent";
-
     public static String STAKING_ACCOUNT = "impawn_getStakingAccount";
 
     public static String ALL_STAKING_ACCOUNT = "impawn_getAllStakingAccount";
 
     public static String CHAIN_REWARD_CONTENT = "etrue_getChainRewardContent";
-
 
     public static String SNAIL_HASH_BY_NUMBER = "etrue_getSnailHashByNumber";
 

@@ -63,30 +63,6 @@ public class TransactionClientUsage extends TrueWeb3jTestNet {
     }
 
     /**
-     * send transaction
-     */
-    /*public void sendTransaction() {
-        try {
-            Credentials credentials = Credentials.create(fromPrivatekey);
-            System.out.println("from address: " + credentials.getAddress());
-            BigInteger value = Constant.DEFAULT_VALUE;
-            RawTransactionManager rawTransactionManager = new RawTransactionManager(
-                    web3j, credentials, chainId);
-
-            EthSendTransaction ethSendTransaction = rawTransactionManager.sendTransaction(
-                    Constant.DEFAULT_GASPRICE, Constant.DEFAULT_CONTRACT_GASLIMIT,
-                    toAddress, "", value);
-            if (ethSendTransaction.getError() != null) {
-                logger.error("sendTransaction error", ethSendTransaction.getError().getMessage());
-            }
-            String transactionHash = ethSendTransaction.getTransactionHash();
-            logger.info("transactionHash------------------->" + transactionHash);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }*/
-
-    /**
      * Used to generate the String after the transaction signed by the sender offline,
      * which contains the signature information of the sender.
      * Often used to send to third parties and used to send transactions directly
