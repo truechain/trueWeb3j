@@ -16,10 +16,10 @@ getSnailBalanceChange: get snail reward address and the balance of the address
 
 
 - [StakingUsage](https://github.com/truechain/trueWeb3j/blob/master/src/main/java/com/trueweb3j/sample/StakingUsage.java)
-getStakingAccountInfo: get staking info by account
-getAllStakingAccount: get all staking account infos 
-getChainRewardContentByAddress: get the proceeds of all the delegate addresses under a pledge node
-getChainRewardContent: get the proceeds of all the delegate addresses of all pledge node
+  -getStakingAccountInfo: get staking info by account
+  -getAllStakingAccount: get all staking account infos 
+  -getChainRewardContentByAddress: get the proceeds of all the delegate addresses under a pledge node
+  -getChainRewardContent: get the proceeds of all the delegate addresses of all pledge node
 
 
 - [SnailBlockUsage](https://github.com/truechain/trueWeb3j/blob/master/src/main/java/com/trueweb3j/sample/SnailBlockUsage.java)
@@ -35,13 +35,10 @@ getCurrentSnailNumber: get current snail block number
 getCommitteeByNumber:  get committeeInfo by committeeNumber
 getCurrentCommitteeNumber: get current committee number
 
-:
+
 - [PaymentTransactionUsage](https://github.com/truechain/trueWeb3j/blob/master/src/main/java/com/trueweb3j/sample/PaymentTransactionUsage.java)
 sendPaymentTx: send payment transaction
 
-wrap method:
-sign trueRawTransaction with privateKey of from address :
-signWithFromPrivateKey()
+signWithFromPrivateKey: sign trueRawTransaction with privateKey of from address :
 
-sign signedTxWithFrom with privatekey of payment address:
-signPaymentTxWithPaymentAndSend(signedTxWithFrom)
+signPaymentTxWithPaymentAndSend: sign signedTxWithFrom with privatekey of payment address:
