@@ -25,4 +25,10 @@ public class FastBlockTest {
     public void testGetCurrentFastNumber() {
         fastBlockUsage.getCurrentFastNumber();
     }
+
+    @Test
+    public void testGetStateChangeByFastNumber() {
+        fastBlockUsage.getStateChangeByFastNumber();
+    }
+
 }

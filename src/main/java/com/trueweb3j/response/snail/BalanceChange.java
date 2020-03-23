@@ -54,4 +54,11 @@ public class BalanceChange {
             }
         }
     }
+
+    @Override
+    public String toString() {
+        return "BalanceChange{" +
+                "addrWithBalance=" + addrWithBalance +
+                '}';
+    }
 }

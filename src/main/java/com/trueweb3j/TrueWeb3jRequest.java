@@ -321,7 +321,6 @@ public class TrueWeb3jRequest {
      * @return
      */
     public BalanceChange getStateChangeByFastNumber(BigInteger fastNumber) {
-        System.out.println("go into getStateChangeByFastNumber");
         BalanceChange balanceChange = null;
         try {
             EtrueBalanceChange etrueBalanceChange = new Request<>(
