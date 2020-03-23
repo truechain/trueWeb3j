@@ -5,40 +5,38 @@ Truechain RPC service interface call based on Web3j
 RPC interface name and specification:
 
 - [FastBlockUsage](https://github.com/truechain/trueWeb3j/blob/master/src/main/java/com/trueweb3j/sample/FastBlockUsage.java)
-getFastBlockByNumber: get FastBlock by fastNumber
-getCurrentFastNumber: get current fastNumber on the chain
-getStateChangeByFastNumber: 
+1. getFastBlockByNumber: get FastBlock by fastNumber
+1. getCurrentFastNumber: get current fastNumber on the chain
+1. getStateChangeByFastNumber: 
 
 - [RewardUsage](https://github.com/truechain/trueWeb3j/blob/master/src/main/java/com/trueweb3j/sample/RewardUsage.java)
-getStateChangeByFastNumber: get balance change with addresses by fast number
-getAddressesSnailReward: get gather addresses snail reward by snailNumber
-getSnailBalanceChange: get snail reward address and the balance of the address
+1. getStateChangeByFastNumber: get balance change with addresses by fast number
+1. getAddressesSnailReward: get gather addresses snail reward by snailNumber
+1. getSnailBalanceChange: get snail reward address and the balance of the address
 
 
 - [StakingUsage](https://github.com/truechain/trueWeb3j/blob/master/src/main/java/com/trueweb3j/sample/StakingUsage.java)
-  -getStakingAccountInfo: get staking info by account
-  -getAllStakingAccount: get all staking account infos 
-  -getChainRewardContentByAddress: get the proceeds of all the delegate addresses under a pledge node
-  -getChainRewardContent: get the proceeds of all the delegate addresses of all pledge node
+1. getStakingAccountInfo: get staking info by account
+1. getAllStakingAccount: get all staking account infos 
+1. getChainRewardContentByAddress: get the proceeds of all the delegate addresses under a pledge node
+1. getChainRewardContent: get the proceeds of all the delegate addresses of all pledge node
 
 
 - [SnailBlockUsage](https://github.com/truechain/trueWeb3j/blob/master/src/main/java/com/trueweb3j/sample/SnailBlockUsage.java)
-getSnailBalanceChange: get snail reward address and balance of the address
-getSnailRewardContent: get snail reward content,inclued blockminer、fruitminer、committeReward、foundationReward
-getSnailBlockByNumber: get snail Block by snailNumber
-getSnailBlockByHash: get snailBlock by snailHash
-getSnailHashByNumber: get snailHash by snailNumber
-getCurrentSnailNumber: get current snail block number
+1. getSnailBalanceChange: get snail reward address and balance of the address
+1. getSnailRewardContent: get snail reward content,inclued blockminer、fruitminer、committeReward、foundationReward
+1. getSnailBlockByNumber: get snail Block by snailNumber
+1. getSnailBlockByHash: get snailBlock by snailHash
+1. getSnailHashByNumber: get snailHash by snailNumber
+1. getCurrentSnailNumber: get current snail block number
 
 
 - [CommitteeInfoUsage](https://github.com/truechain/trueWeb3j/blob/master/src/main/java/com/trueweb3j/sample/CommitteeInfoUsage.java)
-getCommitteeByNumber:  get committeeInfo by committeeNumber
-getCurrentCommitteeNumber: get current committee number
+1. getCommitteeByNumber:  get committeeInfo by committeeNumber
+1. getCurrentCommitteeNumber: get current committee number
 
 
 - [PaymentTransactionUsage](https://github.com/truechain/trueWeb3j/blob/master/src/main/java/com/trueweb3j/sample/PaymentTransactionUsage.java)
-sendPaymentTx: send payment transaction
-
-signWithFromPrivateKey: sign trueRawTransaction with privateKey of from address :
-
-signPaymentTxWithPaymentAndSend: sign signedTxWithFrom with privatekey of payment address:
+1. sendPaymentTx: send payment transaction
+1. signWithFromPrivateKey: sign trueRawTransaction with privateKey of from address :
+1. signPaymentTxWithPaymentAndSend: sign signedTxWithFrom with privatekey of payment address:
