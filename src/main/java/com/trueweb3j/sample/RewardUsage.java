@@ -12,13 +12,18 @@ import java.util.Map;
 public class RewardUsage extends TrueWeb3jTestNet {
     private static final Logger logger = LoggerFactory.getLogger(RewardUsage.class);
 
-
+    /**
+     * get snail reward address and the balance of the address
+     */
     public void getSnailBalanceChange() {
         BigInteger snailNumber = new BigInteger("2");
         Map<String, String> addrWithBalance = trueWeb3jRequest.getSnailBalanceChange(snailNumber);
         logger.info("addrWithBalance=[{}]", addrWithBalance);
     }
 
+    /**
+     *
+     */
     public void getSnailRewardContent() {
         BigInteger snailNumber = new BigInteger("2");
         ChainRewardContent snailChainRewardContent = trueWeb3jRequest.getSnailRewardContent(snailNumber);

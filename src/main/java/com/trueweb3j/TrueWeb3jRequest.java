@@ -132,7 +132,7 @@ public class TrueWeb3jRequest {
     }
 
     /**
-     * get snail reward content:
+     * get snail reward content by snail number
      * inclued blockminer、fruitminer、committeReward、foundationReward
      *
      * @param snailNumber
