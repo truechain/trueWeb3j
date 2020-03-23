@@ -1,4 +1,5 @@
 import com.trueweb3j.TrueWeb3jRequest;
+import com.trueweb3j.common.AddressConstant;
 import com.trueweb3j.common.Constant;
 import com.trueweb3j.response.fast.FastBlock;
 import org.junit.Before;
@@ -17,6 +18,14 @@ public class TrueWeb3jRequestTest {
     public TrueWeb3jRequest trueWeb3jRequest = null;
 
     public Web3j web3j = null;
+
+    //发送者账户
+    String fromPrivatekey = AddressConstant.fromPrivateKey;
+    String fromAddress = AddressConstant.fromAddress;
+    String to = AddressConstant.toAddress;
+
+    String paymentPrivateKey = AddressConstant.paymentPrivatekey;
+    String paymentAddress = AddressConstant.paymentAddress;
 
     @Before
     public void init() {

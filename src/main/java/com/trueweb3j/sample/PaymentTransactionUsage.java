@@ -18,28 +18,14 @@ import org.web3j.utils.Numeric;
 
 import java.math.BigInteger;
 
-public class PaymentTransactionUsage {
-    //发送者账户
-    String fromPrivatekey = AddressConstant.fromPrivateKey;
-    String fromAddress = AddressConstant.fromAddress;
-
-    String paymentPrivateKey = AddressConstant.paymentPrivatekey;
-    String paymentAddress = AddressConstant.paymentAddress;
-    String to = AddressConstant.toAddress;
-
+public class PaymentTransactionUsage extends TrueWeb3jUsage {
 
     public String sendPaymentTxWithFrom() {
         String fromSignedTxStr = null;
-
-        TrueWeb3jRequest trueWeb3jRequest = new TrueWeb3jRequest(Constant.RPC_TESTNET_URL);
-        TrueTransactionManager trueTransactionManager = new TrueTransactionManager(trueWeb3jRequest,
-                Constant.CHAINID_TESTNET);
-
-        Web3j web3jt = Web3j.build(new HttpService(Constant.RPC_TESTNET_URL));
+        TrueTransactionManager trueTransactionManager = new TrueTransactionManager(trueWeb3jRequest, Constant.CHAINID_TESTNET);
         try {
             //get nonce of from address
-            EthGetTransactionCount ethGetTransactionCount = web3jt
-                    .ethGetTransactionCount(fromAddress, DefaultBlockParameterName.LATEST).sendAsync().get();
+            EthGetTransactionCount ethGetTransactionCount = web3j.ethGetTransactionCount(fromAddress, DefaultBlockParameterName.LATEST).sendAsync().get();
             BigInteger nonce = ethGetTransactionCount.getTransactionCount();
             TrueRawTransaction trueRawTransaction = TrueRawTransaction.createTruePaymentTransaction(nonce, Constant.DEFAULT_GASPRICE,
                     Constant.DEFAULT_GASLIMIT, to, Constant.DEFAULT_VALUE, null, paymentAddress);
@@ -56,7 +42,6 @@ public class PaymentTransactionUsage {
             TrueWeb3jRequest trueWeb3jRequest = new TrueWeb3jRequest(Constant.RPC_TESTNET_URL);
             TrueTransactionManager trueTransactionManager = new TrueTransactionManager(trueWeb3jRequest,
                     Constant.CHAINID_TESTNET);
-
             //代付私钥
             EtrueSendTransaction etrueSendTransaction = trueTransactionManager.signWithPaymentAndSend(signedTxWithFrom, paymentPrivateKey);
             if (etrueSendTransaction != null && etrueSendTransaction.hasError()) {

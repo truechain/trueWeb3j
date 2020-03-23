@@ -2,9 +2,6 @@ package com.trueweb3j.sample;
 
 import com.trueweb3j.response.transaction.TrueTransactionManager;
 
-public class FastBlockUsage {
-    public static void main(String[] args) {
+public class FastBlockUsage extends TrueWeb3jUsage {
 
-    }
-//    TrueWeb3jManagerTest.trueWeb3jRequest.getFastBlockByNumber()
 }
