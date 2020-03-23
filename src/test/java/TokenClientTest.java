@@ -1,11 +1,18 @@
 import com.trueweb3j.common.AddressConstant;
 import com.trueweb3j.common.Constant;
+import com.trueweb3j.sample.CommitteeUsage;
 import com.trueweb3j.sample.StakingUsage;
 import com.trueweb3j.sample.erc20.TokenClientUsage;
 import org.junit.Before;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-public class TokenClientTest {
+import java.math.BigInteger;
+
+public class TokenClientTest extends TrueWeb3jRequestTest {
+    private static final Logger logger = LoggerFactory.getLogger(TokenClientTest.class);
+
     private TokenClientUsage tokenClientUsage;
 
     @Before
@@ -15,29 +22,40 @@ public class TokenClientTest {
 
 
     @Test
+    public void testSendTokenTransaction() {
+        tokenClientUsage.sendTokenTransaction(AddressConstant.contractAddress,
+                AddressConstant.toAddress,AddressConstant.fromPrivateKey);
+    }
+
+    @Test
     public void testGetTokenBalance() {
-        tokenClientUsage.getTokenBalance(AddressConstant.fromAddress, AddressConstant.contractAddress);
+        BigInteger balanceValue = tokenClientUsage.getTokenBalance(AddressConstant.fromAddress, AddressConstant.contractAddress);
+        logger.info("balanceValue =[{}]", balanceValue);
     }
 
     @Test
     public void testGetTokenName() {
-        tokenClientUsage.getTokenName(AddressConstant.contractAddress);
+        String tokenName = tokenClientUsage.getTokenName(AddressConstant.contractAddress);
+        logger.info("tokenName =[{}]", tokenName);
     }
 
     @Test
     public void testGetTokenDecimals() {
-        tokenClientUsage.getTokenDecimals(AddressConstant.contractAddress);
+        int tokenDecimals = tokenClientUsage.getTokenDecimals(AddressConstant.contractAddress);
+        logger.info("tokenDecimals =[{}]", tokenDecimals);
     }
 
     @Test
     public void testGetTokenSymbol() {
-        tokenClientUsage.getTokenSymbol(AddressConstant.contractAddress);
+        String tokenSymbol = tokenClientUsage.getTokenSymbol(AddressConstant.contractAddress);
+        logger.info("tokenSymbol={}", tokenSymbol);
     }
 
 
     @Test
     public void testGetTokenTotalSupply() {
-        tokenClientUsage.getTokenTotalSupply(AddressConstant.contractAddress);
+        BigInteger totalSupply = tokenClientUsage.getTokenTotalSupply(AddressConstant.contractAddress);
+        logger.info("totalSupply={}",totalSupply.toString());
     }
 
 

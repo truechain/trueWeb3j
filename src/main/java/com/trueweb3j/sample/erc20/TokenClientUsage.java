@@ -29,13 +29,13 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 /**
- * 基于TERC-20的代币
+ * based on TERC-20 token
  */
 public class TokenClientUsage extends TrueWeb3jTestNet {
-    private static final Logger logger = LoggerFactory.getLogger(CommitteeUsage.class);
+    private static final Logger logger = LoggerFactory.getLogger(TokenClientUsage.class);
 
     /**
-     * 查询TERC-20代币余额
+     * query TERC-20 token balance
      */
     public BigInteger getTokenBalance(String fromAddress, String contractAddress) {
 
@@ -59,7 +59,12 @@ public class TokenClientUsage extends TrueWeb3jTestNet {
             if (ethCall.getError() != null) {
                 logger.error("getTokenBalance error={}", ethCall.getError().getMessage());
             }
-            balanceValue = (BigInteger) results.get(0).getValue();
+            if (results.size() == 0) {
+                logger.error("contractAddress =[{}] is not exist", contractAddress);
+                return balanceValue;
+            }
+            String resultVal = results.get(0).getValue().toString();
+            balanceValue = new BigInteger(resultVal);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -67,7 +72,7 @@ public class TokenClientUsage extends TrueWeb3jTestNet {
     }
 
     /**
-     * 查询TERC-20代币名称
+     * query TERC-20 token name
      *
      * @param contractAddress
      * @return
@@ -97,7 +102,7 @@ public class TokenClientUsage extends TrueWeb3jTestNet {
     }
 
     /**
-     * 查询TERC-20代币符号
+     * query TERC-20 token symbol
      *
      * @param contractAddress
      * @return
@@ -129,7 +134,7 @@ public class TokenClientUsage extends TrueWeb3jTestNet {
     }
 
     /**
-     * 查询TERC-20代币精度
+     * query TERC-20 token decimals
      *
      * @param contractAddress
      * @return
@@ -159,7 +164,7 @@ public class TokenClientUsage extends TrueWeb3jTestNet {
     }
 
     /**
-     * 查询TERC-20代币发行总量
+     * query TERC-20 token total supply
      *
      * @param contractAddress
      * @return
@@ -189,17 +194,17 @@ public class TokenClientUsage extends TrueWeb3jTestNet {
     }
 
     /**
-     * TERC-20代币转账
+     * TERC-20 token transfer
      *
-     * @param contractAddress 代币合约地址
-     * @param toAddress       接受者地址
-     * @param from_privateKey 发送者私钥
+     * @param contractAddress
+     * @param toAddress
+     * @param from_privateKey
      */
     public void sendTokenTransaction(String contractAddress, String toAddress, String from_privateKey) {
         try {
             Credentials from_credentials = Credentials.create(from_privateKey);
             String from_address = from_credentials.getAddress();
-            BigInteger amount = new BigInteger("1000000000000000000");
+            BigInteger amount = Constant.DEFAULT_VALUE;
             String methodName = "transfer";
             List<Type> inputParameters = new ArrayList<>();
             List<TypeReference<?>> outputParameters = new ArrayList<>();
@@ -230,7 +235,7 @@ public class TokenClientUsage extends TrueWeb3jTestNet {
             if (ethSendTransaction.getError() != null) {
                 logger.error("sendTokenTransaction error" + ethSendTransaction.getError());
             }
-            System.out.println("txHash------------------->" + txHash);
+            logger.info("txHash={}", txHash);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -15,12 +15,12 @@ public class TrueWeb3jTestNet {
     public static int chainId = Constant.CHAINID_TESTNET;
 
     //发送者账户
-    String fromPrivatekey = AddressConstant.fromPrivateKey;
-    String fromAddress = AddressConstant.fromAddress;
-    String to = AddressConstant.toAddress;
+    public static String fromPrivatekey = AddressConstant.fromPrivateKey;
+    public static String fromAddress = AddressConstant.fromAddress;
+    public static String toAddress = AddressConstant.toAddress;
 
-    String paymentPrivateKey = AddressConstant.paymentPrivatekey;
-    String paymentAddress = AddressConstant.paymentAddress;
+    public static String paymentPrivateKey = AddressConstant.paymentPrivatekey;
+    public static String paymentAddress = AddressConstant.paymentAddress;
 
 }
 

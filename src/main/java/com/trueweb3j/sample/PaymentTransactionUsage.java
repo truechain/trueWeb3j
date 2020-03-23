@@ -23,7 +23,7 @@ public class PaymentTransactionUsage extends TrueWeb3jTestNet {
             EthGetTransactionCount ethGetTransactionCount = web3j.ethGetTransactionCount(fromAddress, DefaultBlockParameterName.LATEST).sendAsync().get();
             BigInteger nonce = ethGetTransactionCount.getTransactionCount();
             TrueRawTransaction trueRawTransaction = TrueRawTransaction.createTruePaymentTransaction(nonce, Constant.DEFAULT_GASPRICE,
-                    Constant.DEFAULT_GASLIMIT, to, Constant.DEFAULT_VALUE, null, paymentAddress);
+                    Constant.DEFAULT_GASLIMIT, toAddress, Constant.DEFAULT_VALUE, null, paymentAddress);
 
             fromSignedTxStr = trueTransactionManager.signWithFromPrivateKey(trueRawTransaction, fromPrivatekey);
         } catch (Exception e) {
@@ -64,7 +64,7 @@ public class PaymentTransactionUsage extends TrueWeb3jTestNet {
 
             //create trueRawTransaction
             TrueRawTransaction trueRawTransaction = TrueRawTransaction.createTruePaymentTransaction(nonce, Constant.DEFAULT_GASPRICE,
-                    Constant.DEFAULT_GASLIMIT, to, Constant.DEFAULT_VALUE, null, paymentAddress);
+                    Constant.DEFAULT_GASLIMIT, toAddress, Constant.DEFAULT_VALUE, null, paymentAddress);
 
             TrueTransactionManager trueTransactionManager = new TrueTransactionManager(trueWeb3jRequest, chainId);
 
