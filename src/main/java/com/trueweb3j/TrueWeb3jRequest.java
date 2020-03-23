@@ -396,17 +396,16 @@ public class TrueWeb3jRequest {
     /**
      * get staking info by account
      *
-     * @param epochid
      * @param account
      * @return
      */
-    public StakingAccountInfo getStakingAccountInfo(BigInteger epochid, String account) {
+    public StakingAccountInfo getStakingAccountInfo(String account) {
         StakingAccountInfo stakingAccountInfo = null;
         try {
             EtrueStakingAccountInfo etrueStakingAccountInfo = new Request<>(
                     Constant.STAKING_ACCOUNT,
                     Arrays.asList(
-                            Numeric.encodeQuantity(epochid),
+                            DefaultBlockParameterName.LATEST,
                             account),
                     web3jService,
                     EtrueStakingAccountInfo.class).send();
@@ -422,7 +421,7 @@ public class TrueWeb3jRequest {
      *
      * @return
      */
-    public AllStakingAccount getAllStakingAccount(DefaultBlockParameter defaultBlockParameter) {
+    public AllStakingAccount getAllStakingAccount() {
         AllStakingAccount allStakingAccount = null;
         try {
             EtrueAllStakingAccountInfo etrueAllStakingAccountInfo = new Request<>(

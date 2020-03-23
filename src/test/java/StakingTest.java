@@ -21,6 +21,12 @@ public class StakingTest extends TrueWeb3jRequestTest {
         stakingUsage.getChainRewardContent();
     }
 
+
+    @Test
+    public void testGetStakingAccountInfo() {
+        stakingUsage.getStakingAccountInfo();
+    }
+
     @Test
     public void testGetAllStakingAccount() {
         stakingUsage.getAllStakingAccount();

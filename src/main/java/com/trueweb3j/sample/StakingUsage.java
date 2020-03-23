@@ -12,6 +12,7 @@ import com.trueweb3j.response.staking.StakingAccountInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.web3j.protocol.core.DefaultBlockParameter;
+import org.web3j.protocol.core.DefaultBlockParameterName;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -19,6 +20,10 @@ import java.util.List;
 public class StakingUsage extends TrueWeb3jTestNet {
     private static final Logger logger = LoggerFactory.getLogger(StakingUsage.class);
 
+    /**
+     * useage:
+     * get the proceeds of all the delegate addresses under a pledge node
+     */
     public void getChainRewardContentByAddress() {
         BigInteger snailNumber = new BigInteger("39748");
         String stakingAddress = "0x01504af31ce7c2e922a4d44f4c46349ff6bc589c";
@@ -76,23 +81,18 @@ public class StakingUsage extends TrueWeb3jTestNet {
      * get pledge infos of all nodes and addresses
      */
     public void getAllStakingAccount() {
-        BigInteger snailNumber = new BigInteger("2");
-        AllStakingAccount allStakingAccount = trueWeb3jRequest.getAllStakingAccount(
-                DefaultBlockParameter.valueOf(snailNumber));
+        BigInteger snailNumber = new BigInteger("39748");
+        AllStakingAccount allStakingAccount = trueWeb3jRequest.getAllStakingAccount();
         logger.info("allStakingAccount=[{}]", allStakingAccount);
-
     }
 
     /**
      * get pledge infos of all nodes and addresses
      */
     public void getStakingAccountInfo() {
-        BigInteger snailNumber = new BigInteger("2");
-        String stakingAddress = "0x400abb159dc64f7d8b13fce3d0fd5c6a4559cb80";
-        BigInteger epochid = new BigInteger("10");
+        String stakingAddress = "0x01504af31ce7c2e922a4d44f4c46349ff6bc589c";
         StakingAccountInfo stakingAccountInfo = trueWeb3jRequest.getStakingAccountInfo(
-                epochid, stakingAddress);
+                stakingAddress);
         logger.info("stakingAccountInfo=[{}]", stakingAccountInfo);
-
     }
 }

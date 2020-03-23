@@ -23,11 +23,6 @@ public class TransactionClientTest extends TrueWeb3jRequestTest {
     }
 
     @Test
-    public void testSendTransaction() {
-        transactionClientUsage.sendTransaction();
-    }
-
-    @Test
     public void testGenRawTransaction() {
         String hexMessage =transactionClientUsage.genRawTransaction();
         transactionClientUsage.sendRawTransaction(hexMessage);

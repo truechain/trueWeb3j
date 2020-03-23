@@ -33,4 +33,14 @@ public class ImpawnUnit {
     public void setRedeemInfo(List<RedeemItem> redeemInfo) {
         this.redeemInfo = redeemInfo;
     }
+
+
+    @Override
+    public String toString() {
+        return "ImpawnUnit{" +
+                "address='" + address + '\'' +
+                ", value=" + value +
+                ", redeemInfo=" + redeemInfo +
+                '}';
+    }
 }

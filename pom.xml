@@ -56,6 +56,7 @@
             <artifactId>web3j-spring-boot-starter</artifactId>
             <version>1.6.0</version>
         </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

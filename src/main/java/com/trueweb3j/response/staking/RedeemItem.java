@@ -30,4 +30,13 @@ public class RedeemItem {
     public void setState(String state) {
         this.state = state;
     }
+
+    @Override
+    public String toString() {
+        return "RedeemItem{" +
+                "amount='" + amount + '\'' +
+                ", epochID='" + epochID + '\'' +
+                ", state='" + state + '\'' +
+                '}';
+    }
 }

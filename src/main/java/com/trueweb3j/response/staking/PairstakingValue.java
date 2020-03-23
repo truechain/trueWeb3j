@@ -30,4 +30,13 @@ public class PairstakingValue {
     public void setState(String state) {
         this.state = state;
     }
+
+    @Override
+    public String toString() {
+        return "PairstakingValue{" +
+                "amount='" + amount + '\'' +
+                ", height='" + height + '\'' +
+                ", state='" + state + '\'' +
+                '}';
+    }
 }

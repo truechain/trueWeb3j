@@ -13,6 +13,4 @@ import java.math.BigInteger;
 public class TransactionTest extends TrueWeb3jRequestTest {
     private static final Logger logger = LoggerFactory.getLogger(TransactionTest.class);
 
-
-
 }
