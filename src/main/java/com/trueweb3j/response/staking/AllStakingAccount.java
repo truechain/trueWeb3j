@@ -33,4 +33,13 @@ public class AllStakingAccount {
     public void setDelegateCount(int delegateCount) {
         this.delegateCount = delegateCount;
     }
+
+    @Override
+    public String toString() {
+        return "AllStakingAccount{" +
+                "stakers=" + stakers +
+                ", stakerCount=" + stakerCount +
+                ", delegateCount=" + delegateCount +
+                '}';
+    }
 }

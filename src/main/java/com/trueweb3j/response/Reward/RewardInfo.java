@@ -20,7 +20,7 @@ public class RewardInfo {
     }
 
     public BigInteger getAmount() {
-        return Numeric.decodeQuantity(Amount);
+        return new BigInteger(Amount);
     }
 
     public String getAmountRaw() {

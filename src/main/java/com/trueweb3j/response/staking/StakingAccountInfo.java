@@ -93,4 +93,20 @@ public class StakingAccountInfo {
     public void setValidStaking(String validStaking) {
         this.validStaking = validStaking;
     }
+
+
+    @Override
+    public String toString() {
+        return "StakingAccountInfo{" +
+                "id=" + id +
+                ", unit=" + unit +
+                ", votePubKey='" + votePubKey + '\'' +
+                ", fee='" + fee + '\'' +
+                ", committee=" + committee +
+                ", delegation=" + delegation +
+                ", modify=" + modify +
+                ", staking='" + staking + '\'' +
+                ", validStaking='" + validStaking + '\'' +
+                '}';
+    }
 }

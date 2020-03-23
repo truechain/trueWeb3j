@@ -16,24 +16,7 @@ import java.util.Map;
 public class UseExmaple {
 
     public static void main(String[] args) {
-        PaymentTransactionUsage paymentTransactionUseExample = new PaymentTransactionUsage();
-//        System.out.println(paymentTransactionUseExample.sendPaymentTx());
 
-        /*String fromSignedTxStr =paymentTransactionUseExample.sendPaymentTxWithFrom();
-        String txHash = paymentTransactionUseExample.sendPaymentTxWithSigned(fromSignedTxStr);
-        System.out.println("txHash=" + txHash);*/
-
-        TrueWeb3jRequest trueWeb3jRequest = new TrueWeb3jRequest(Constant.RPC_TESTNET_URL);
-
-        BigInteger requestFastNumber = new BigInteger("4824766");
-        FastBlock fastBlock = trueWeb3jRequest.getFastBlockByNumber(requestFastNumber, true);
-        System.out.println(fastBlock.getNumberRaw());
-
-//        testSnailBalance(trueWeb3jRequest);
-//        testSnailReward(trueWeb3jRequest);
-//        testStakingAccount(trueWeb3jRequest);
-//        getAllStakingAccount(trueWeb3jRequest);
-//        getChainRewardContent(trueWeb3jRequest);
     }
 
     public void test() {
@@ -105,21 +88,7 @@ public class UseExmaple {
     }
     //
 
-    public static void testSnailReward(TrueWeb3jRequest trueWeb3jRequest) {
-        BigInteger snailNumber = new BigInteger("2");
-        ChainRewardContent snailChainRewardContent = trueWeb3jRequest.getSnailRewardContent(snailNumber);
-        Map<String, BigInteger> addressSnailReward = trueWeb3jRequest.getAddressesSnailReward(snailNumber);
-        System.out.println("size=" + snailChainRewardContent.getFruitminer());
-    }
-
-    public static void testSnailBalance(TrueWeb3jRequest trueWeb3jRequest) {
-        trueWeb3jRequest.getSnailBalanceChange(new BigInteger("2"));
-        FastBlock fastBlock = trueWeb3jRequest.getFastBlockByNumber(new BigInteger("2"), false);
-        System.out.println("snailNumber=" + fastBlock.getSnailNumber());
-
-        Map<String, String> addrWithBalance = trueWeb3jRequest.getSnailBalanceChange(new BigInteger("2"));
 
 
-    }
 
 }

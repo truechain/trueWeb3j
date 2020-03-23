@@ -40,12 +40,12 @@ public class PaymentTransactionUsage extends TrueWeb3jTestNet {
             TrueTransactionManager trueTransactionManager = new TrueTransactionManager(trueWeb3jRequest,
                     chainId);
 
-            //代付私钥签名并发送交易
+            //payment sign and send transaction
             EtrueSendTransaction etrueSendTransaction = trueTransactionManager.signWithPaymentAndSend(signedTxWithFrom, paymentPrivateKey);
 
 
             if (etrueSendTransaction != null && etrueSendTransaction.hasError()) {
-                System.out.println("sendPaymentTransactionWithSigned error " + etrueSendTransaction.getError().getMessage());
+                logger.error("sendPaymentTransactionWithSigned error=[{}] ", etrueSendTransaction.getError().getMessage());
             }
             txHash = etrueSendTransaction.getTrueTransactionHash();
         } catch (Exception e) {
@@ -72,7 +72,7 @@ public class PaymentTransactionUsage extends TrueWeb3jTestNet {
             EtrueSendTransaction etrueSendTransaction = trueTransactionManager.signWithFromPaymentAndSend(
                     trueRawTransaction, fromPrivatekey, paymentPrivateKey);
             if (etrueSendTransaction != null && etrueSendTransaction.hasError()) {
-                System.out.println("sendPaymentTransactionWithSigned error " + etrueSendTransaction.getError().getMessage());
+                logger.error("sendPaymentTransactionWithSigned error=[{}] ", etrueSendTransaction.getError().getMessage());
             }
             txHash = etrueSendTransaction.getTrueTransactionHash();
         } catch (Exception e) {
