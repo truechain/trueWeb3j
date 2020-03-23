@@ -21,9 +21,7 @@ public class RewardUsage extends TrueWeb3jTestNet {
         logger.info("addrWithBalance=[{}]", addrWithBalance);
     }
 
-    /**
-     *
-     */
+
     public void getSnailRewardContent() {
         BigInteger snailNumber = new BigInteger("2");
         ChainRewardContent snailChainRewardContent = trueWeb3jRequest.getSnailRewardContent(snailNumber);

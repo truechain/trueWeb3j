@@ -19,17 +19,17 @@ public class UseExmaple {
 
     }
 
-    public void test() {
+    /*public void test() {
         TrueWeb3jRequest trueWeb3jRequest = new TrueWeb3jRequest(Constant.RPC_TESTNET_URL);
 
         //通过fastNumbe获取奖励的慢链高度snailNumber
         BigInteger requestFastNumber = new BigInteger("4760234");
         FastBlock fastBlock = trueWeb3jRequest.getFastBlockByNumber(requestFastNumber, false);
 
-        /**
+        *//**
          * fastBlock的snailNumber为空,说明没有奖励慢链
          * 不为空，奖励的高度为snailNumber值
-         */
+         *//*
         if (fastBlock.getSnailNumber().compareTo(BigInteger.ZERO) == 1) {
             System.out.println("get snailRewardBlock number=" + fastBlock.getSnailNumber());
         }
@@ -58,16 +58,16 @@ public class UseExmaple {
         for (RewardInfo rewardInfo : rewardInfos) {
             System.out.println(rewardInfo.toString());
         }
-    }
+    }*/
 
-    public static void testStakingAccount(TrueWeb3jRequest trueWeb3jRequest) {
+    /*public static void testStakingAccount(TrueWeb3jRequest trueWeb3jRequest) {
         BigInteger snailNumber = new BigInteger("2");
         ChainRewardContent snailChainRewardContent = trueWeb3jRequest.getSnailRewardContent(snailNumber);
         Map<String, BigInteger> addressSnailReward = trueWeb3jRequest.getAddressesSnailReward(snailNumber);
         System.out.println("size=" + snailChainRewardContent.getFruitminer());
-    }
+    }*/
 
-    public static void getChainRewardContent(TrueWeb3jRequest trueWeb3jRequest) {
+   /* public static void getChainRewardContent(TrueWeb3jRequest trueWeb3jRequest) {
 
 //        String stakingAddress = "0xdaa07f97034916517afff28b672a61b0027346a2";
         BigInteger requestSnailNumber = new BigInteger("39748");
@@ -78,17 +78,14 @@ public class UseExmaple {
         List<SARewardInfos> saRewardInfos = chainRewardContent.getCommitteReward();
         System.out.println("addr=" + saRewardInfos.get(0).Items.get(0).getAddress());
 //        System.out.println("stakingAddress=" + chainRewardContent.getStakingReward().size());
-    }
+    }*/
 
-    public static void getAllStakingAccount(TrueWeb3jRequest trueWeb3jRequest) {
+    /*public static void getAllStakingAccount(TrueWeb3jRequest trueWeb3jRequest) {
         BigInteger snailNumber = new BigInteger("-2");
         AllStakingAccount allStakingAccount = trueWeb3jRequest.getAllStakingAccount(
                 DefaultBlockParameter.valueOf(snailNumber));
         System.out.println("count=" + allStakingAccount.getDelegateCount());
-    }
-    //
-
-
+    }*/
 
 
 }
