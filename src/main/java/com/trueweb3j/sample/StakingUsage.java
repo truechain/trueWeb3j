@@ -1,6 +1,7 @@
 package com.trueweb3j.sample;
 
 import com.trueweb3j.TrueWeb3jRequest;
+import com.trueweb3j.common.AddressConstant;
 import com.trueweb3j.common.Constant;
 import com.trueweb3j.response.Reward.ChainRewardContent;
 import com.trueweb3j.response.Reward.RewardInfo;
@@ -39,7 +40,7 @@ public class StakingUsage extends TrueWeb3jTestNet {
 
     public void getChainRewardContent() {
         BigInteger snailNumber = new BigInteger("39748");
-        String stakingAddress = Constant.EMPTY_ADDRESS;
+        String stakingAddress = AddressConstant.EMPTY_ADDRESS;
         ChainRewardContent chainRewardContent = trueWeb3jRequest.getChainRewardContent(
                 snailNumber, stakingAddress);
         if (chainRewardContent == null) {

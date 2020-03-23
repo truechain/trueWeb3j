@@ -1,5 +1,6 @@
 package com.trueweb3j;
 
+import com.trueweb3j.common.AddressConstant;
 import com.trueweb3j.response.*;
 import com.trueweb3j.response.Reward.ChainRewardContent;
 import com.trueweb3j.response.Reward.RewardInfo;
@@ -148,7 +149,7 @@ public class TrueWeb3jRequest {
         try {
             EtrueChainRewardContent etrueChainRewardContent = new Request<>(
                     Constant.CHAIN_REWARD_CONTENT,
-                    Arrays.asList(blockParameter.getValue(), Constant.EMPTY_ADDRESS),
+                    Arrays.asList(blockParameter.getValue(), AddressConstant.EMPTY_ADDRESS),
                     web3jService,
                     EtrueChainRewardContent.class).send();
             chainRewardContent = etrueChainRewardContent.getChainRewardContent();

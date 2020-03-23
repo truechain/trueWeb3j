@@ -23,17 +23,20 @@ public class Constant {
 
     public static BigInteger DEFAULT_GASPRICE = Convert.toWei("2", Convert.Unit.GWEI).toBigInteger();
 
-    public static BigInteger DEFAULT_GASLIMIT = Convert.toWei("210000", Convert.Unit.WEI).toBigInteger();
+    public static BigInteger DEFAULT_GASLIMIT = Convert.toWei("21000", Convert.Unit.WEI).toBigInteger();
+
+    public static BigInteger DEFAULT_CONTRACT_GASLIMIT = Convert.toWei("200000", Convert.Unit.WEI).toBigInteger();
 
     public static BigInteger DEFAULT_VALUE = Convert.toWei("1", Convert.Unit.ETHER).toBigInteger();
 
     public static BigInteger DEFAULT_FEE = Convert.toWei("1", Convert.Unit.ETHER).toBigInteger();
 
-    public static String EMPTY_ADDRESS = "0x0000000000000000000000000000000000000000";
+
 
     public static String BALANCE_CHANGE_BY_SNAIL_NUMBER = "etrue_getBalanceChangeBySnailNumber";
 
     public static String BLOCK_BYNUMBER = "etrue_getBlockByNumber";
+
     public static String BLOCK_BYHASH = "etrue_getBlockByHash";
 
     public static String CURRENT_BLOCK_NUMBER = "etrue_blockNumber";
