@@ -31,7 +31,7 @@ RPC interface name and specification:
 1. getCurrentSnailNumber: get current snail block number
 
 
-- [CommitteeInfoUsage](https://github.com/truechain/trueWeb3j/blob/master/src/main/java/com/trueweb3j/sample/CommitteeInfoUsage.java)
+- [CommitteeUsage](https://github.com/truechain/trueWeb3j/blob/master/src/main/java/com/trueweb3j/sample/CommitteeUsage.java)
 1. getCommitteeByNumber:  get committeeInfo by committeeNumber
 1. getCurrentCommitteeNumber: get current committee number
 
