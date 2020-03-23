@@ -136,6 +136,8 @@ public class TrueWeb3jRequest {
      * get snail reward content by snail number
      * inclued blockminer、fruitminer、committeReward、foundationReward
      *
+     *
+     * attention:getSnailRewardContent get by rpc of "etrue_getChainRewardContent"
      * @param snailNumber
      * @return
      */
@@ -157,6 +159,63 @@ public class TrueWeb3jRequest {
             e.printStackTrace();
         }
         return chainRewardContent;
+    }
+
+    /**
+     * get gather addresses snail reward by snailNumber
+     *
+     * @param snailNumber
+     * @return
+     */
+    public Map<String, BigInteger> getAddressesSnailReward(BigInteger snailNumber) {
+        //慢链奖励中涉及所有的地址
+        Map<String, BigInteger> snailRewardWithAddr = new HashMap<String, BigInteger>();
+        ChainRewardContent chainRewardContent = getSnailRewardContent(snailNumber);
+        if (chainRewardContent == null) {
+            return snailRewardWithAddr;
+        }
+
+        RewardInfo minerRewardInfo = chainRewardContent.getBlockminer();
+        gatherAddressBalance(snailRewardWithAddr, minerRewardInfo);
+
+        RewardInfo foundationRewardInfo = chainRewardContent.getFoundationReward();
+        gatherAddressBalance(snailRewardWithAddr, foundationRewardInfo);
+
+        List<RewardInfo> fruitRewardInfos = chainRewardContent.getFruitminer();
+        if (fruitRewardInfos != null && fruitRewardInfos.size() != 0) {
+            for (RewardInfo fruitRewardInfo : fruitRewardInfos) {
+                gatherAddressBalance(snailRewardWithAddr, fruitRewardInfo);
+            }
+        }
+
+        List<SARewardInfos> saRewardInfosList = chainRewardContent.getCommitteReward();
+        if (saRewardInfosList != null && saRewardInfosList.size() > 0) {
+            for (SARewardInfos saRewardInfo : saRewardInfosList) {
+                if (saRewardInfo != null && saRewardInfo.getItems() != null
+                        && saRewardInfo.getItems().size() != 0) {
+                    for (RewardInfo committeeRewardInfo : saRewardInfo.getItems()) {
+                        gatherAddressBalance(snailRewardWithAddr, committeeRewardInfo);
+                    }
+                }
+            }
+        }
+        return snailRewardWithAddr;
+    }
+
+    private Map<String, BigInteger> gatherAddressBalance(
+            Map<String, BigInteger> snailRewardWithAddr, RewardInfo rewardInfo) {
+        if (rewardInfo == null) {
+            return snailRewardWithAddr;
+        }
+        String address = rewardInfo.getAddress();
+        if (snailRewardWithAddr.get(address) != null) {
+            BigInteger balance = snailRewardWithAddr.get(address);
+            balance = balance.add(rewardInfo.getAmount());
+            snailRewardWithAddr.put(address, balance);
+        } else {
+            snailRewardWithAddr.put(address, rewardInfo.getAmount());
+        }
+        return snailRewardWithAddr;
     }
 
 
@@ -335,62 +394,6 @@ public class TrueWeb3jRequest {
         return balanceChange;
     }
 
-    /**
-     * get gather addresses snail reward by snailNumber
-     *
-     * @param snailNumber
-     * @return
-     */
-    public Map<String, BigInteger> getAddressesSnailReward(BigInteger snailNumber) {
-        //慢链奖励中涉及所有的地址
-        Map<String, BigInteger> snailRewardWithAddr = new HashMap<String, BigInteger>();
-        ChainRewardContent chainRewardContent = getSnailRewardContent(snailNumber);
-        if (chainRewardContent == null) {
-            return snailRewardWithAddr;
-        }
-
-        RewardInfo minerRewardInfo = chainRewardContent.getBlockminer();
-        gatherAddressBalance(snailRewardWithAddr, minerRewardInfo);
-
-        RewardInfo foundationRewardInfo = chainRewardContent.getFoundationReward();
-        gatherAddressBalance(snailRewardWithAddr, foundationRewardInfo);
-
-        List<RewardInfo> fruitRewardInfos = chainRewardContent.getFruitminer();
-        if (fruitRewardInfos != null && fruitRewardInfos.size() != 0) {
-            for (RewardInfo fruitRewardInfo : fruitRewardInfos) {
-                gatherAddressBalance(snailRewardWithAddr, fruitRewardInfo);
-            }
-        }
-
-        List<SARewardInfos> saRewardInfosList = chainRewardContent.getCommitteReward();
-        if (saRewardInfosList != null && saRewardInfosList.size() > 0) {
-            for (SARewardInfos saRewardInfo : saRewardInfosList) {
-                if (saRewardInfo != null && saRewardInfo.getItems() != null
-                        && saRewardInfo.getItems().size() != 0) {
-                    for (RewardInfo committeeRewardInfo : saRewardInfo.getItems()) {
-                        gatherAddressBalance(snailRewardWithAddr, committeeRewardInfo);
-                    }
-                }
-            }
-        }
-        return snailRewardWithAddr;
-    }
-
-    private Map<String, BigInteger> gatherAddressBalance(
-            Map<String, BigInteger> snailRewardWithAddr, RewardInfo rewardInfo) {
-        if (rewardInfo == null) {
-            return snailRewardWithAddr;
-        }
-        String address = rewardInfo.getAddress();
-        if (snailRewardWithAddr.get(address) != null) {
-            BigInteger balance = snailRewardWithAddr.get(address);
-            balance = balance.add(rewardInfo.getAmount());
-            snailRewardWithAddr.put(address, balance);
-        } else {
-            snailRewardWithAddr.put(address, rewardInfo.getAmount());
-        }
-        return snailRewardWithAddr;
-    }
 
     /**
      * get staking info by account
@@ -436,7 +439,7 @@ public class TrueWeb3jRequest {
     }
 
     /**
-     * get the proceeds of all the delegate addresses under a pledge node
+     * get the proceeds of all the delegate addresses under a pledge node(stakingAddress) in snailNumber block
      *
      * @param snailNumber
      * @param stakingAddress
