@@ -227,7 +227,6 @@ public class TrueWeb3jRequest {
      * @return
      */
     public SnailBlock getSnailBlockByNumber(BigInteger snailNumber, boolean inclFruit) {
-        System.out.println("go into getSnailBlockByNumber");
         SnailBlock snailBlock = null;
         try {
             EtrueSnailBlock etrueSnailBlock = new Request<>(
@@ -249,7 +248,6 @@ public class TrueWeb3jRequest {
      * @return if return null, donnot have generate the snailNumber
      */
     public String getSnailHashByNumber(BigInteger snailNumber) {
-        System.out.println("go into getSnailHashByNumber");
         String snailHash = null;
         try {
             EtrueSnailHash etrueSnailHash = new Request<>(
@@ -272,7 +270,6 @@ public class TrueWeb3jRequest {
      * @return
      */
     public SnailBlock getSnailBlockByHash(String snailHash, boolean inclFruit) {
-        System.out.println("go into getSnailBlockByHash");
         SnailBlock snailBlock = null;
         try {
             EtrueSnailBlock etrueSnailBlock = new Request<>(
@@ -293,7 +290,6 @@ public class TrueWeb3jRequest {
      * @return
      */
     public BigInteger getCurrentSnailNumber() {
-        System.out.println("go into getCurrentSnailNumber");
         BigInteger snailNumber = null;
         try {
             EtrueSnailBlockNumber etrueSnailBlockNumber = new Request<>(
@@ -316,7 +312,6 @@ public class TrueWeb3jRequest {
      * @return
      */
     public CommitteeInfo getCommitteeByNumber(BigInteger committeeNumber) {
-        System.out.println("go into getCommitteeByNumber");
         CommitteeInfo committeeInfo = null;
         try {
             EtrueCommittee etrueCommittee = new Request<>(
@@ -337,7 +332,6 @@ public class TrueWeb3jRequest {
      * @return
      */
     public Integer getCurrentCommitteeNumber() {
-        System.out.println("go into getCurrentCommitteeNumber");
         Integer currentCommitteeNumber = null;
         try {
             EtrueCommitteeNumber etrueCommitteeNumber = new Request<>(
@@ -359,7 +353,6 @@ public class TrueWeb3jRequest {
      * @return
      */
     public EtrueSendTransaction etrueSendRawTransaction(String signedTransactionData) {
-        System.out.println("go into etrueSendTrueRawTransaction");
         EtrueSendTransaction etrueSendTrueTransaction = null;
         try {
             etrueSendTrueTransaction = new Request<>(
