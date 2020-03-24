@@ -317,6 +317,10 @@ public class TrueTransaction {
     }
 
     public void setPv(Object pv) {
+        if (pv == null) {
+            this.pv = 0;
+            return;
+        }
         if (pv instanceof String) {
             this.pv = Numeric.toBigInt((String) pv).longValueExact();
         } else if (pv instanceof Integer) {
