@@ -10,7 +10,7 @@ import java.math.BigInteger;
  */
 public class Constant {
 
-    public static String RPC_MAINNET_URL = "http://47.108.131.16:8565";
+    public static String RPC_MAINNET_URL = "http://47.108.131.16:8545";
     public static int CHAINID_MAINNET = 19330;
 
     public static String RPC_TESTNET_URL = "https://rpc.truescan.net/testnet";

@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.ObjectReader;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.trueweb3j.response.EtrueFastBlock;
+import com.trueweb3j.response.committee.BlockMember;
 import com.trueweb3j.response.transaction.TrueTransaction;
 import org.web3j.protocol.ObjectMapperFactory;
 import org.web3j.utils.Numeric;
@@ -36,12 +37,14 @@ public class FastBlock {
     private String transactionsRoot;
     private String receiptsRoot;
 
+    private List<BlockMember> switchInfos;
+
     private List<TransactionResult> transactions;
 
     public FastBlock() {
     }
 
-    public FastBlock(String number, String hash, String parentHash, String committeeRoot, String maker, String logsBloom, String stateRoot, String snailNumber, String snailHash, String extraData, String size, String gasLimit, String gasUsed, String timestamp, String transactionsRoot, String receiptsRoot, List<TransactionResult> transactions) {
+    public FastBlock(String number, String hash, String parentHash, String committeeRoot, String maker, String logsBloom, String stateRoot, String snailNumber, String snailHash, String extraData, String size, String gasLimit, String gasUsed, String timestamp, String transactionsRoot, String receiptsRoot, List<BlockMember> switchInfos, List<TransactionResult> transactions) {
         this.number = number;
         this.hash = hash;
         this.parentHash = parentHash;
@@ -58,7 +61,16 @@ public class FastBlock {
         this.timestamp = timestamp;
         this.transactionsRoot = transactionsRoot;
         this.receiptsRoot = receiptsRoot;
+        this.switchInfos = switchInfos;
         this.transactions = transactions;
+    }
+
+    public List<BlockMember> getSwitchInfos() {
+        return switchInfos;
+    }
+
+    public void setSwitchInfos(List<BlockMember> switchInfos) {
+        this.switchInfos = switchInfos;
     }
 
     public String getCommitteeRoot() {
@@ -456,6 +468,7 @@ public class FastBlock {
                 ", timestamp='" + timestamp + '\'' +
                 ", transactionsRoot='" + transactionsRoot + '\'' +
                 ", receiptsRoot='" + receiptsRoot + '\'' +
+                ", switchInfos=" + switchInfos +
                 ", transactions=" + transactions +
                 '}';
     }
