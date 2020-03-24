@@ -6,7 +6,6 @@ import com.trueweb3j.sample.CommitteeUsage;
 import com.trueweb3j.sample.TrueWeb3jTestNet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.core.env.Environment;
 import org.web3j.abi.FunctionEncoder;
 import org.web3j.abi.FunctionReturnDecoder;
 import org.web3j.abi.TypeReference;

@@ -6,7 +6,7 @@
 
     <groupId>com.github.truechain</groupId>
     <artifactId>trueWeb3j</artifactId>
-    <version>4.5.2</version>
+    <version>4.5.3</version>
     <packaging>jar</packaging>
 
     <parent>
@@ -49,12 +49,6 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.3.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.web3j</groupId>
-            <artifactId>web3j-spring-boot-starter</artifactId>
-            <version>1.6.0</version>
         </dependency>
 
         <dependency>
