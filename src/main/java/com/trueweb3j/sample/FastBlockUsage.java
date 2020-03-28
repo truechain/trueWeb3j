@@ -11,7 +11,7 @@ public class FastBlockUsage extends TrueWeb3jTestNet {
     private static final Logger logger = LoggerFactory.getLogger(FastBlockUsage.class);
 
     public void getFastBlockByNumber() {
-        BigInteger fastNumber = new BigInteger("1455867");
+        BigInteger fastNumber = new BigInteger("4962524");
         FastBlock fastBlock = trueWeb3jRequest.getFastBlockByNumber(fastNumber, true);
         logger.info("fast block=[{}]", fastBlock.toString());
     }

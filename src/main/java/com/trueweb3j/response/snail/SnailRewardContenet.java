@@ -8,8 +8,8 @@ public class SnailRewardContenet {
 
     private Map<String, BigInteger> blockminer;
     private List<Map<String, BigInteger>> fruitminer;
-    private Map<String, BigInteger> committeReward;
-    private Map<String, BigInteger> foundationReward;
+    private Map<String, BigInteger> committeeReward;
+    private Map<String, BigInteger> developerReward;
 
 
     public Map<String, BigInteger> getBlockminer() {
@@ -28,19 +28,19 @@ public class SnailRewardContenet {
         this.fruitminer = fruitminer;
     }
 
-    public Map<String, BigInteger> getCommitteReward() {
-        return committeReward;
+    public Map<String, BigInteger> getCommitteeReward() {
+        return committeeReward;
     }
 
-    public void setCommitteReward(Map<String, BigInteger> committeReward) {
-        this.committeReward = committeReward;
+    public void setCommitteeReward(Map<String, BigInteger> committeeReward) {
+        this.committeeReward = committeeReward;
     }
 
-    public Map<String, BigInteger> getFoundationReward() {
-        return foundationReward;
+    public Map<String, BigInteger> getDeveloperReward() {
+        return developerReward;
     }
 
-    public void setFoundationReward(Map<String, BigInteger> foundationReward) {
-        this.foundationReward = foundationReward;
+    public void setDeveloperReward(Map<String, BigInteger> developerReward) {
+        this.developerReward = developerReward;
     }
 }

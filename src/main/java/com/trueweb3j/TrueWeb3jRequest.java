@@ -135,15 +135,15 @@ public class TrueWeb3jRequest {
     /**
      * get snail reward content by snail number
      * inclued blockminer、fruitminer、committeReward、foundationReward
-     *
-     *
+     * <p>
+     * <p>
      * attention:getSnailRewardContent get by rpc of "etrue_getChainRewardContent"
+     *
      * @param snailNumber
      * @return
      */
     public ChainRewardContent getSnailRewardContent(BigInteger snailNumber) {
         ChainRewardContent chainRewardContent = null;
-
         if (snailNumber == null) {
             return null;
         }
@@ -160,6 +160,26 @@ public class TrueWeb3jRequest {
         }
         return chainRewardContent;
     }
+
+    public SnailRewardContenet getSnailRewardContent_Old(BigInteger snailNumber) {
+        SnailRewardContenet snailRewardContenet = null;
+        if (snailNumber == null) {
+            return null;
+        }
+        DefaultBlockParameter blockParameter = DefaultBlockParameter.valueOf(snailNumber);
+        try {
+            EtrueSnailRewardContent etrueSnailRewardContent = new Request<>(
+                    Constant.SNAIL_REWARD_CONTENT,
+                    Arrays.asList(blockParameter.getValue()),
+                    web3jService,
+                    EtrueSnailRewardContent.class).send();
+            snailRewardContenet = etrueSnailRewardContent.getSnailRewardContenet();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return snailRewardContenet;
+    }
+
 
     /**
      * get gather addresses snail reward by snailNumber
@@ -178,8 +198,8 @@ public class TrueWeb3jRequest {
         RewardInfo minerRewardInfo = chainRewardContent.getBlockminer();
         gatherAddressBalance(snailRewardWithAddr, minerRewardInfo);
 
-        RewardInfo foundationRewardInfo = chainRewardContent.getFoundationReward();
-        gatherAddressBalance(snailRewardWithAddr, foundationRewardInfo);
+        RewardInfo developerReward = chainRewardContent.getDeveloperReward();
+        gatherAddressBalance(snailRewardWithAddr, developerReward);
 
         List<RewardInfo> fruitRewardInfos = chainRewardContent.getFruitminer();
         if (fruitRewardInfos != null && fruitRewardInfos.size() != 0) {
@@ -188,7 +208,7 @@ public class TrueWeb3jRequest {
             }
         }
 
-        List<SARewardInfos> saRewardInfosList = chainRewardContent.getCommitteReward();
+        List<SARewardInfos> saRewardInfosList = chainRewardContent.getCommitteeReward();
         if (saRewardInfosList != null && saRewardInfosList.size() > 0) {
             for (SARewardInfos saRewardInfo : saRewardInfosList) {
                 if (saRewardInfo != null && saRewardInfo.getItems() != null

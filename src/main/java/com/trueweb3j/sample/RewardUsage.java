@@ -3,6 +3,7 @@ package com.trueweb3j.sample;
 import com.trueweb3j.TrueWeb3jRequest;
 import com.trueweb3j.response.Reward.ChainRewardContent;
 import com.trueweb3j.response.fast.FastBlock;
+import com.trueweb3j.response.snail.SnailRewardContenet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,11 +23,24 @@ public class RewardUsage extends TrueWeb3jTestNet {
     }
 
 
+    /**
+     * get snailReward content  by snailNumber
+     * call etrue_getChainRewardContent by empty address
+     */
     public void getSnailRewardContent() {
-        BigInteger snailNumber = new BigInteger("2");
+        BigInteger snailNumber = new BigInteger("40700");
         ChainRewardContent snailChainRewardContent = trueWeb3jRequest.getSnailRewardContent(snailNumber);
         logger.info("snailChainRewardContent=[{}]", snailChainRewardContent);
+        System.out.println("snailChainRewardContent=" + snailChainRewardContent.toString());
     }
+
+    public void getSnailRewardContent_Old() {
+        BigInteger snailNumber = new BigInteger("40700");
+        SnailRewardContenet snailRewardContenet = trueWeb3jRequest.getSnailRewardContent_Old(snailNumber);
+        logger.info("snailRewardContenet=[{}]", snailRewardContenet.toString());
+        System.out.println("snailRewardContenet=" + snailRewardContenet.toString());
+    }
+
 
     public void getAddressesSnailReward() {
         BigInteger snailNumber = new BigInteger("2");

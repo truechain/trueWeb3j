@@ -4,6 +4,7 @@ import org.web3j.utils.Numeric;
 
 import java.math.BigInteger;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 某个慢链块的收益
@@ -19,26 +20,31 @@ public class ChainRewardContent {
     /**
      * 当传入空地址，获取的是所有的收益
      */
-    public RewardInfo foundationReward;
+    public RewardInfo developerReward;
 
     public RewardInfo blockminer;
 
     public List<RewardInfo> fruitminer;
 
-    public List<SARewardInfos> committeReward;
+    public List<SARewardInfos> committeeReward;
 
     public ChainRewardContent() {
     }
 
+    public RewardInfo getDeveloperReward() {
+        return developerReward;
+    }
 
-    public ChainRewardContent(String number, String time, List<RewardInfo> stakingReward, RewardInfo foundationReward, RewardInfo blockminer, List<RewardInfo> fruitminer, List<SARewardInfos> committeReward) {
-        Number = number;
-        this.time = time;
-        this.stakingReward = stakingReward;
-        this.foundationReward = foundationReward;
-        this.blockminer = blockminer;
-        this.fruitminer = fruitminer;
-        this.committeReward = committeReward;
+    public void setDeveloperReward(RewardInfo developerReward) {
+        this.developerReward = developerReward;
+    }
+
+    public List<SARewardInfos> getCommitteeReward() {
+        return committeeReward;
+    }
+
+    public void setCommitteeReward(List<SARewardInfos> committeeReward) {
+        this.committeeReward = committeeReward;
     }
 
     public  BigInteger getNumber() {
@@ -73,14 +79,6 @@ public class ChainRewardContent {
         this.stakingReward = stakingReward;
     }
 
-    public RewardInfo getFoundationReward() {
-        return foundationReward;
-    }
-
-    public void setFoundationReward(RewardInfo foundationReward) {
-        this.foundationReward = foundationReward;
-    }
-
     public RewardInfo getBlockminer() {
         return blockminer;
     }
@@ -97,24 +95,16 @@ public class ChainRewardContent {
         this.fruitminer = fruitminer;
     }
 
-    public List<SARewardInfos> getCommitteReward() {
-        return committeReward;
-    }
-
-    public void setCommitteReward(List<SARewardInfos> committeReward) {
-        this.committeReward = committeReward;
-    }
-
     @Override
     public String toString() {
         return "ChainRewardContent{" +
                 "Number='" + Number + '\'' +
                 ", time='" + time + '\'' +
                 ", stakingReward=" + stakingReward +
-                ", foundationReward=" + foundationReward +
+                ", developerReward=" + developerReward +
                 ", blockminer=" + blockminer +
                 ", fruitminer=" + fruitminer +
-                ", committeReward=" + committeReward +
+                ", committeeReward=" + committeeReward +
                 '}';
     }
 }

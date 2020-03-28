@@ -22,6 +22,11 @@ public class RewardTest extends TrueWeb3jRequestTest {
     }
 
     @Test
+    public void getSnailRewardContent_Old() {
+        rewardUsage.getSnailRewardContent_Old();
+    }
+
+    @Test
     public void testGetAddressesSnailReward() {
         rewardUsage.getAddressesSnailReward();
     }

@@ -58,7 +58,7 @@ public class StakingUsage extends TrueWeb3jTestNet {
         logger.info("snailNumber=[{}],receviedSnailNumber=[{}]", receviedSnailNumber, timeStamp);
 
         //get all pledge nodes reward
-        List<SARewardInfos> saRewardInfoList = chainRewardContent.getCommitteReward();
+        List<SARewardInfos> saRewardInfoList = chainRewardContent.getCommitteeReward();
         if (saRewardInfoList != null) {
             for (SARewardInfos saRewardInfo : saRewardInfoList) {
                 List<RewardInfo> rewardInfoList = saRewardInfo.getItems();
@@ -73,7 +73,7 @@ public class StakingUsage extends TrueWeb3jTestNet {
         //get fruits miner reward
         List<RewardInfo> fruitRewardInfos = chainRewardContent.getFruitminer();
         //get foundation reward
-        RewardInfo foundationRewardInfo = chainRewardContent.getFoundationReward();
+        RewardInfo developerRewardInfo = chainRewardContent.getDeveloperReward();
     }
 
 

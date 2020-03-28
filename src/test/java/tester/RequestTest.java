@@ -38,19 +38,17 @@ public class RequestTest extends RequestTester {
     protected void initWeb3Client(HttpService httpService) {
         this.web3j = Web3j.build(httpService);
         this.trueWeb3jRequest = new TrueWeb3jRequest(httpService);
-        System.out.println("hehe");
     }
 
     @Test
     public void testGetFastBlockByNumber() throws Exception {
         try {
-            BigInteger fastNumber = new BigInteger("100");
-            FastBlock fastBlock = trueWeb3jRequest.getFastBlockByNumber(fastNumber, false);
+            BigInteger fastNumber = new BigInteger("4962524");
+            FastBlock fastBlock = trueWeb3jRequest.getFastBlockByNumber(fastNumber, true);
             System.out.println(fastBlock.getNumberRaw());
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     @Test
