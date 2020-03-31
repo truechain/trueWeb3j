@@ -10,8 +10,9 @@ import java.math.BigInteger;
  */
 public class Constant {
 
-    public static String RPC_MAINNET_URL = "http://47.108.131.16:8545";
+    public static String RPC_MAINNET_URL = "https://rpc.truewallet.net";
     public static int CHAINID_MAINNET = 19330;
+
 
     public static String RPC_TESTNET_URL = "https://rpc.truescan.net/testnet";
     public static int CHAINID_TESTNET = 18928;
@@ -25,7 +26,6 @@ public class Constant {
     public static BigInteger DEFAULT_VALUE = Convert.toWei("1", Convert.Unit.ETHER).toBigInteger();
 
     public static BigInteger DEFAULT_FEE = Convert.toWei("1", Convert.Unit.ETHER).toBigInteger();
-
 
 
     public static String BALANCE_CHANGE_BY_SNAIL_NUMBER = "etrue_getBalanceChangeBySnailNumber";

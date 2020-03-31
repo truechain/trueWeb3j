@@ -28,16 +28,14 @@ public class RewardUsage extends TrueWeb3jTestNet {
      * call etrue_getChainRewardContent by empty address
      */
     public void getSnailRewardContent() {
-        BigInteger snailNumber = new BigInteger("40700");
+        BigInteger snailNumber = new BigInteger("15000");
         ChainRewardContent snailChainRewardContent = trueWeb3jRequest.getSnailRewardContent(snailNumber);
-        logger.info("snailChainRewardContent=[{}]", snailChainRewardContent);
         System.out.println("snailChainRewardContent=" + snailChainRewardContent.toString());
     }
 
     public void getSnailRewardContent_Old() {
-        BigInteger snailNumber = new BigInteger("40700");
+        BigInteger snailNumber = new BigInteger("40041");
         SnailRewardContenet snailRewardContenet = trueWeb3jRequest.getSnailRewardContent_Old(snailNumber);
-        logger.info("snailRewardContenet=[{}]", snailRewardContenet.toString());
         System.out.println("snailRewardContenet=" + snailRewardContenet.toString());
     }
 

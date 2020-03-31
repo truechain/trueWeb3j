@@ -6,7 +6,7 @@
 
     <groupId>com.github.truechain</groupId>
     <artifactId>trueWeb3j</artifactId>
-    <version>4.5.5.2</version>
+    <version>4.5.5.4</version>
     <packaging>jar</packaging>
 
     <parent>
