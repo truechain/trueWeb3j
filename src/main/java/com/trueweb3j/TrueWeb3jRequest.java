@@ -2,14 +2,13 @@ package com.trueweb3j;
 
 import com.trueweb3j.common.AddressConstant;
 import com.trueweb3j.response.*;
+import com.trueweb3j.response.EtrueSnailBlockNumber;
 import com.trueweb3j.response.Reward.ChainRewardContent;
 import com.trueweb3j.response.Reward.RewardInfo;
 import com.trueweb3j.response.Reward.SARewardInfos;
 import com.trueweb3j.response.committee.CommitteeInfo;
 import com.trueweb3j.response.fast.FastBlock;
-import com.trueweb3j.response.snail.BalanceChange;
-import com.trueweb3j.response.snail.SnailBlock;
-import com.trueweb3j.response.snail.SnailRewardContenet;
+import com.trueweb3j.response.snail.*;
 import com.trueweb3j.response.staking.AllStakingAccount;
 import com.trueweb3j.response.staking.StakingAccountInfo;
 import org.apache.commons.lang3.StringUtils;
@@ -19,10 +18,12 @@ import org.web3j.protocol.core.DefaultBlockParameterName;
 import org.web3j.protocol.core.Request;
 import org.web3j.protocol.core.methods.response.EthBlock;
 import org.web3j.protocol.core.methods.response.EthBlockNumber;
+import org.web3j.protocol.core.methods.response.EthGetBalance;
 import org.web3j.protocol.http.HttpService;
 import com.trueweb3j.common.Constant;
 import org.web3j.utils.Numeric;
 
+import java.io.IOException;
 import java.math.BigInteger;
 import java.util.*;
 
@@ -40,6 +41,31 @@ public class TrueWeb3jRequest {
     public TrueWeb3jRequest(HttpService httpService) {
         this.web3jService = httpService;
     }
+
+
+    /**
+     * query lock balance
+     */
+    public BigInteger getLockBalance(String address, DefaultBlockParameter defaultBlockParameter) {
+        BigInteger balanceValue = BigInteger.ZERO;
+        if (StringUtils.isBlank(address)) {
+            return balanceValue;
+        }
+        if (defaultBlockParameter == null) {
+            defaultBlockParameter = DefaultBlockParameterName.LATEST;
+        }
+        try {
+            EthGetBalance ethGetBalance = new Request<>("eth_getLockBalance",
+                    Arrays.asList(address, defaultBlockParameter.getValue()),
+                    web3jService,
+                    EthGetBalance.class).send();
+            balanceValue = ethGetBalance.getBalance();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return balanceValue;
+    }
+
 
     /**
      * get FastBlock by fastNumber
@@ -392,19 +418,19 @@ public class TrueWeb3jRequest {
      * @param fastNumber
      * @return
      */
-    public BalanceChange getStateChangeByFastNumber(BigInteger fastNumber) {
-        BalanceChange balanceChange = null;
+    public FastBalanceChange getStateChangeByFastNumber(BigInteger fastNumber) {
+        FastBalanceChange fastBalanceChange = null;
         try {
-            EtrueBalanceChange etrueBalanceChange = new Request<>(
+            EtrueFastBalanceChange etrueFastBalanceChange = new Request<>(
                     Constant.STATE_CHANGE_BY_FAST_NUMBER,
                     Arrays.asList(DefaultBlockParameter.valueOf(fastNumber).getValue()),
                     web3jService,
-                    EtrueBalanceChange.class).send();
-            balanceChange = etrueBalanceChange.getBalanceChange();
+                    EtrueFastBalanceChange.class).send();
+            fastBalanceChange = etrueFastBalanceChange.getFastBalanceChange();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return balanceChange;
+        return fastBalanceChange;
     }
 
 

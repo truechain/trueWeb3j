@@ -13,7 +13,6 @@ public class Constant {
     public static String RPC_MAINNET_URL = "https://rpc.truewallet.net";
     public static int CHAINID_MAINNET = 19330;
 
-
     public static String RPC_TESTNET_URL = "https://rpc.truescan.net/testnet";
     public static int CHAINID_TESTNET = 18928;
 

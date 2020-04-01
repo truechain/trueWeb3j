@@ -2,6 +2,7 @@ package com.trueweb3j.sample;
 
 import com.trueweb3j.response.fast.FastBlock;
 import com.trueweb3j.response.snail.BalanceChange;
+import com.trueweb3j.response.snail.FastBalanceChange;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,9 +33,10 @@ public class FastBlockUsage extends TrueWeb3jTestNet {
      * get balance with address which has changed
      */
     public void getStateChangeByFastNumber() {
-        BigInteger fastNumber = new BigInteger("3612572");
-        BalanceChange balanceChange = trueWeb3jRequest.getStateChangeByFastNumber(fastNumber);
-        logger.info("balanceChange=[{}]", balanceChange);
+        BigInteger fastNumber = new BigInteger("1011");
+        FastBalanceChange fastBalanceChange = trueWeb3jRequest.getStateChangeByFastNumber(fastNumber);
+//        logger.info("balanceChange=[{}]", balanceChange);
+        System.out.println("balanceChange="+fastBalanceChange.toString());
     }
 
 }
