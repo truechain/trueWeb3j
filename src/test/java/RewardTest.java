@@ -31,5 +31,10 @@ public class RewardTest extends TrueWeb3jRequestTest {
         rewardUsage.getAddressesSnailReward();
     }
 
+    @Test
+    public void testGetFastBockOfReward() {
+        rewardUsage.getFastBockOfReward();
+    }
+
 
 }

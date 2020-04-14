@@ -46,4 +46,12 @@ public class RewardUsage extends TrueWeb3jTestNet {
         logger.info("addressSnailReward=[{}]", addressSnailReward);
     }
 
+    public void getFastBockOfReward() {
+        BigInteger snailNumber = new BigInteger("1");
+        FastBlock fastBlock = trueWeb3jRequest.getFastBockOfReward(snailNumber);
+        logger.info("fastBlock=[{}]", fastBlock);
+        System.out.println("fastBlock="+fastBlock);
+    }
+
+
 }

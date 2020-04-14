@@ -505,4 +505,21 @@ public class TrueWeb3jRequest {
     }
 
 
+    public FastBlock getFastBockOfReward(BigInteger snailRewardNumber) {
+        DefaultBlockParameter blockParameter = DefaultBlockParameter.valueOf(snailRewardNumber);
+        FastBlock fastBlock = null;
+        try {
+            EtrueFastBlock etrueFastBlock = new Request<>(
+                    Constant.FAST_BLOCK_OF_REWARD,
+                    Arrays.asList(blockParameter.getValue()),
+                    web3jService,
+                    EtrueFastBlock.class).send();
+            fastBlock = etrueFastBlock.getFastBlock();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return fastBlock;
+    }
+
+
 }
