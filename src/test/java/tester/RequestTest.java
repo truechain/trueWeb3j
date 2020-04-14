@@ -41,17 +41,6 @@ public class RequestTest extends RequestTester {
     }
 
     @Test
-    public void testGetFastBlockByNumber() throws Exception {
-        try {
-            BigInteger fastNumber = new BigInteger("4962524");
-            FastBlock fastBlock = trueWeb3jRequest.getFastBlockByNumber(fastNumber, true);
-            System.out.println(fastBlock.getNumberRaw());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Test
     public void testWeb3ClientVersion() throws Exception {
         web3j.web3ClientVersion().send();
 

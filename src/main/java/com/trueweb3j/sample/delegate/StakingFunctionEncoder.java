@@ -1,4 +1,4 @@
-package com.trueweb3j.staking;
+package com.trueweb3j.sample.delegate;
 
 import org.web3j.abi.FunctionEncoder;
 import org.web3j.abi.FunctionReturnDecoder;
@@ -154,6 +154,16 @@ public class StakingFunctionEncoder {
         return FunctionEncoder.encode(function);
     }
 
+    public static String makeSetFee(BigInteger valueWei) {
+        List<Type> inputParameters = new ArrayList<>();
+        Uint256 _value = new Uint256(valueWei);
+        inputParameters.add(_value);
+
+        List<TypeReference<?>> outputParameters = new ArrayList<>();
+        Function function = new Function("setFee", inputParameters, outputParameters);
+        return FunctionEncoder.encode(function);
+    }
+
 
     /**
      *  makeWithdraw is make a withDraw function
@@ -262,7 +272,4 @@ public class StakingFunctionEncoder {
         return byteArray;
     }
 
-    public static void main(String[] args) {
-        System.out.println(hexStrToByteArray("04c48daa6d4e9fc1a01ba7520a650729710a1f9b93bf52b31e36c7239457ecba5c12c137dd518dbc1324636818d8a1b604e553f680f4d5068b6a056604d2041dfa").length);
-    }
 }

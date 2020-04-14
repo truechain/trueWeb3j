@@ -17,6 +17,11 @@ public class FastBlockTest {
     }
 
     @Test
+    public void testGetLockBalance() {
+        fastBlockUsage.getLockBalance();
+    }
+
+    @Test
     public void testGetFastBlockByHash() {
         fastBlockUsage.getFastBlockByHash();
     }
