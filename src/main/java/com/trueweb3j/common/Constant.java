@@ -43,6 +43,8 @@ public class Constant {
 
     public static String SNAIL_REWARD_CONTENT = "etrue_getSnailRewardContent";
 
+    public static String FAST_BLOCK_OF_REWARD = "etrue_getRewardBlock";
+
     public static String SNAIL_HASH_BY_NUMBER = "etrue_getSnailHashByNumber";
 
     public static String SNAIL_BLOCK_NUMBER = "etrue_snailBlockNumber";
@@ -56,6 +58,5 @@ public class Constant {
     public static String CURRENT_COMMITTEE_NUMBER = "etrue_committeeNumber";
 
     public static String SEND_TRUE_RAW_TRANSACTION = "etrue_sendTrueRawTransaction";
-
 
 }
